@@ -92,7 +92,7 @@ function Banner() {
             </div>
             <hr className="my-2" />
 
-            <div>
+            <div className="overflow-scroll">
               <table className="w-full  rounded-lg shadow-xl px-5">
                 <thead className="bg-gray-500 ">
                   <tr className="w-full border border-gray-100 shadow-inner text-white">

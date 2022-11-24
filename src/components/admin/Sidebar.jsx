@@ -80,7 +80,7 @@ function Sidebar() {
 
   return (
     <>
-      <div className="w-72 shadow-md min-h-screen max-h-fit bg-gray-50">
+      <div className="w-64 flex-shrink-0 shadow-md min-h-screen max-h-fit bg-gray-50">
         <div className="mt-5 mb-3 flex items-center justify-center">
           <div className="w-36 rounded-full h-full">
             <img

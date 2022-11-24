@@ -93,7 +93,7 @@ function SubCategory() {
                 }}
               />
 
-              <div>
+              <div className="overflow-scroll">
                 <table className="w-full border border-gray-200 rounded-md shadow-md px-5">
                   <thead className="bg-gray-500 ">
                     <tr className="w-full border border-gray-100 text-white">
