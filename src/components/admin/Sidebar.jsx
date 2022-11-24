@@ -86,7 +86,7 @@ function Sidebar() {
             <img
               src="/logo.png"
               alt="Logo"
-              className="w-28 h-28 object-fill  mx-auto rounded-full border border-gray-100 shadow-lg "
+              className="w-36 h-36 object-contain  mx-auto rounded-full border border-gray-100 shadow-lg "
             />
           </div>
         </div>
