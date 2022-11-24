@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
+import EditButton from "../../../components/utils/buttons/EditButton";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
 
 function SubCategory() {
   //* For Fetching Sub Category Data
@@ -117,21 +119,16 @@ function SubCategory() {
                                 {subCategory.category_name}
                               </td>
 
-                              <td className="py-2 px-5 text-gray-600">
+                              <td className="py-2 px-5 flex items-center justify-center text-gray-600">
                                 <NavLink to={`edit/${subCategory.id}`}>
-                                  <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                    Update Category
-                                  </button>
+                                  <EditButton />
                                 </NavLink>
-                                <button
-                                  className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                  onClick={() => {
+                                <DeleteButton
+                                  click={() => {
                                     toggleIsDelete();
                                     setId(subCategory.id);
                                   }}
-                                >
-                                  Delete
-                                </button>
+                                />
                               </td>
                             </tr>
                           );
@@ -158,21 +155,16 @@ function SubCategory() {
                                   {dat.subcategory_name}
                                 </td>
 
-                                <td className="py-2 px-5 text-gray-600">
+                                <td className="py-2 px-5 flex items-center justify-center text-gray-600">
                                   <NavLink to={`edit/${dat.id}`}>
-                                    <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                      Update Category
-                                    </button>
+                                    <EditButton />
                                   </NavLink>
-                                  <button
-                                    className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                    onClick={() => {
-                                      toggleIsDelete;
+                                  <DeleteButton
+                                    click={() => {
+                                      toggleIsDelete();
                                       setId(dat.id);
                                     }}
-                                  >
-                                    Delete
-                                  </button>
+                                  />
                                 </td>
                               </tr>
                             );

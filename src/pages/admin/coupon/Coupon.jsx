@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
+import EditButton from "../../../components/utils/buttons/EditButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
@@ -103,7 +105,7 @@ function Coupon() {
                     <td className="py-2 px-5 ">Is Amount</td>
                     <td className="py-2 px-5 ">Offer Amount</td>
                     <td className="py-2 px-5 ">Is Percent</td>
-                    <td className="py-2 px-5 ">Percent Amount</td>
+                    <td className="py-2 px-5 ">Percentage</td>
                     <td className="py-2 px-5 ">Action</td>
                   </tr>
                 </thead>
@@ -148,24 +150,19 @@ function Coupon() {
                             <td className="py-2 px-5 text-gray-600">
                               {coupon.offerPercent == null
                                 ? "-"
-                                : `Rs ${coupon.offerPercent}`}
+                                : `${coupon.offerPercent} %`}
                             </td>
 
-                            <td className="py-2 px-5 text-gray-600 flex">
+                            <td className="py-2 px-5 text-gray-600 flex items-center justify-center">
                               <NavLink to={`edit/${coupon.id}`}>
-                                <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                  <i className="ri-edit-circle-line"></i>
-                                </button>
+                                <EditButton />
                               </NavLink>
-                              <button
-                                className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                onClick={() => {
+                              <DeleteButton
+                                click={() => {
                                   toggleIsDelete();
                                   setId(coupon.id);
                                 }}
-                              >
-                                <i className="ri-delete-bin-4-line"></i>
-                              </button>
+                              />
                             </td>
                           </tr>
                         );
@@ -224,21 +221,16 @@ function Coupon() {
                                   : `Rs ${coupon.offerPercent}`}
                               </td>
 
-                              <td className="py-2 px-5 text-gray-600 flex">
+                              <td className="py-2 flex items-center justify-center px-5 text-gray-600 ">
                                 <NavLink to={`edit/${coupon.id}`}>
-                                  <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                    <i className="ri-edit-circle-line"></i>
-                                  </button>
+                                  <EditButton />
                                 </NavLink>
-                                <button
-                                  className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                  onClick={() => {
+                                <DeleteButton
+                                  click={() => {
                                     toggleIsDelete();
                                     setId(coupon.id);
                                   }}
-                                >
-                                  <i className="ri-delete-bin-4-line"></i>
-                                </button>
+                                />
                               </td>
                             </tr>
                           );

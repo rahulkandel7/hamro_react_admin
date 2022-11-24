@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
+import EditButton from "../../../components/utils/buttons/EditButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
@@ -117,21 +119,16 @@ function Shipping() {
                               Rs {shipping.price}
                             </td>
 
-                            <td className="py-2 px-5 text-gray-600">
+                            <td className="py-2 px-5 flex justify-center items-center text-gray-600">
                               <NavLink to={`edit/${shipping.id}`}>
-                                <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                  Update Shipping Area
-                                </button>
+                                <EditButton />
                               </NavLink>
-                              <button
-                                className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                onClick={() => {
+                              <DeleteButton
+                                click={() => {
                                   toggleIsDelete();
                                   setId(shipping.id);
                                 }}
-                              >
-                                Delete
-                              </button>
+                              />
                             </td>
                           </tr>
                         );
@@ -161,20 +158,16 @@ function Shipping() {
                                 Rs {dat.price}
                               </td>
 
-                              <td className="py-2 px-5 text-gray-600">
+                              <td className="py-2 px-5 flex items-center justify-center text-gray-600">
                                 <NavLink to={`edit/${dat.id}`}>
-                                  <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                    Update Shipping Area
-                                  </button>
+                                  <EditButton />
                                 </NavLink>
-                                <button
-                                  className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                  onClick={() => {
-                                    toggleIsDelete;
+                                <DeleteButton
+                                  click={() => {
+                                    toggleIsDelete();
+                                    setId(dat.id);
                                   }}
-                                >
-                                  Delete
-                                </button>
+                                />
                               </td>
                             </tr>
                           );

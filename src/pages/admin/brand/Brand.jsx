@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
+import EditButton from "../../../components/utils/buttons/EditButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
@@ -118,21 +120,17 @@ function Category() {
                               {brand.brand_name}
                             </td>
 
-                            <td className="py-2 px-5 text-gray-600">
+                            <td className="py-2 flex items-center px-5 text-gray-600">
                               <NavLink to={`edit/${brand.id}`}>
-                                <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                  Update Brand
-                                </button>
+                                <EditButton />
                               </NavLink>
-                              <button
-                                className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                onClick={() => {
+
+                              <DeleteButton
+                                click={() => {
                                   toggleIsDelete();
                                   setId(brand.id);
                                 }}
-                              >
-                                Delete
-                              </button>
+                              />
                             </td>
                           </tr>
                         );
@@ -159,20 +157,17 @@ function Category() {
                                 {dat.brand_name}
                               </td>
 
-                              <td className="py-2 px-5 text-gray-600">
+                              <td className="py-2   px-5 flex justify-center items-center text-gray-600">
                                 <NavLink to={`edit/${dat.id}`}>
-                                  <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                    Update Category
-                                  </button>
+                                  <EditButton />
                                 </NavLink>
-                                <button
-                                  className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                  onClick={() => {
-                                    toggleIsDelete;
+
+                                <DeleteButton
+                                  click={() => {
+                                    toggleIsDelete();
+                                    setId(dat.id);
                                   }}
-                                >
-                                  Delete
-                                </button>
+                                />
                               </td>
                             </tr>
                           );
