@@ -4,6 +4,8 @@ import AdminLayout from "../../../components/admin/AdminLayout";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import AddIcon from "../../../components/admin/utils/AddIcon";
+
 function AddAds() {
   const navigate = useNavigate();
   const addSchema = object({
@@ -71,7 +73,7 @@ function AddAds() {
                     name="ad_code"
                     id="ad_code"
                     onChange={handleChange}
-                    className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                    className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                   />
                   <p className="text-sm text-red-500 pb-3">{errors.ad_code}</p>
 
@@ -83,7 +85,7 @@ function AddAds() {
                     name="ad_description"
                     id="ad_description"
                     onChange={handleChange}
-                    className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                    className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                   />
                   <p className="text-sm text-red-500 pb-3">
                     {errors.ad_description}
@@ -99,7 +101,7 @@ function AddAds() {
                           alt=""
                         />
                       ) : (
-                        <i className="text-6xl text-gray-300 ri-add-line "></i>
+                        <AddIcon />
                       )}
                     </div>
                   </label>
@@ -111,7 +113,7 @@ function AddAds() {
                     onChange={(e) => {
                       setFieldValue("photopath", e.currentTarget.files[0]);
                     }}
-                    className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                    className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                   />
 
                   <p className="text-sm text-red-500 pb-3">

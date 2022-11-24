@@ -5,6 +5,11 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import Spinner from "../../../components/utils/Spinner";
+
+// Icons
+import { CiTrash } from "react-icons/ci";
+import { TbEditCircle } from "react-icons/tb";
 
 function Ads() {
   //* For Fetching Data
@@ -59,7 +64,7 @@ function Ads() {
 
   //*Show Loading
   if (!data && !error) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
 
   //? Show Data when loaded
@@ -116,20 +121,20 @@ function Ads() {
                           />
                         </td>
 
-                        <td className="py-2 px-5 text-gray-600">
+                        <td className="py-2 flex items-center px-5 text-gray-600">
                           <NavLink to={`edit/${ads.id}`}>
-                            <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                              Update Ads
+                            <button className="px-6 flex items-center py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
+                              <TbEditCircle className="mr-2" /> Update
                             </button>
                           </NavLink>
                           <button
-                            className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
+                            className="px-6 flex items-center py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
                             onClick={() => {
                               toggleIsDelete();
                               setId(ads.id);
                             }}
                           >
-                            Delete
+                            <CiTrash className="mr-2" /> Delete
                           </button>
                         </td>
                       </tr>
