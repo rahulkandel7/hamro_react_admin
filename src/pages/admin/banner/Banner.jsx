@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import Spinner from "../../../components/utils/Spinner";
+import Error from "../../500";
 
 function Banner() {
   //* For Fetching Data
@@ -54,12 +56,12 @@ function Banner() {
   const navigate = useNavigate();
   //! Show Error
   if (error) {
-    return <>{error}</>;
+    return <Error />;
   }
 
   //*Show Loading
   if (!data && !error) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
 
   //? Show Data when loaded

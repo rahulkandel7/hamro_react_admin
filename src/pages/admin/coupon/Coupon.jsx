@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import SearchBox from "../../../components/utils/SearchBox";
+import Spinner from "../../../components/utils/Spinner";
 
 function Coupon() {
   const fetcher = (...args) =>
@@ -51,6 +53,15 @@ function Coupon() {
     mutate();
     toggleIsDelete();
   }
+
+  if (error) {
+    return <h1>Error</h1>;
+  }
+
+  if (!error && !data) {
+    return <Spinner />;
+  }
+
   if (data) {
     return (
       <>
@@ -72,23 +83,12 @@ function Coupon() {
               </NavLink>
             </div>
             <hr className="my-2" />
-            <div className="flex justify-end items-center my-3">
-              <div className="relative">
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  className="border border-gray-200 pl-2 outline-none focus-visible:border-indigo-600 pr-6 text-gray-500 rounded-md shadow-md py-1"
-                  placeholder="Search Coupon..."
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                  }}
-                />
-                <div className="absolute top-[50%] -translate-y-[50%] right-2 text-gray-500">
-                  <i className="ri-search-2-line"></i>
-                </div>
-              </div>
-            </div>
+            <SearchBox
+              name="Coupon"
+              change={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
 
             <div>
               <table className="w-full border border-gray-200 rounded-md shadow-md px-5">

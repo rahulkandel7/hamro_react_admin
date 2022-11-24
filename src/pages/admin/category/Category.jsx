@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
+import EditButton from "../../../components/utils/buttons/EditButton";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
+
+import SearchBox from "../../../components/utils/SearchBox";
+import Spinner from "../../../components/utils/Spinner";
 
 function Category() {
   //* For Fetching Data
@@ -62,7 +67,7 @@ function Category() {
 
   //*Show Loading
   if (!data && !error) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
 
   //? Show Data when loaded
@@ -92,23 +97,12 @@ function Category() {
               </NavLink>
             </div>
             <hr className="my-2" />
-            <div className="flex justify-end items-center my-3">
-              <div className="relative">
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  className="border border-gray-200 pl-2 outline-none focus-visible:border-indigo-600 pr-6 text-gray-500 rounded-md shadow-md py-1"
-                  placeholder="Search Category..."
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                  }}
-                />
-                <div className="absolute top-[50%] -translate-y-[50%] right-2 text-gray-500">
-                  <i className="ri-search-2-line"></i>
-                </div>
-              </div>
-            </div>
+            <SearchBox
+              name="Category"
+              change={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
             <div>
               <table className="w-full border border-gray-200 rounded-md shadow-md px-5">
                 <thead className="bg-gray-500 ">
@@ -139,21 +133,17 @@ function Category() {
                               />
                             </td>
 
-                            <td className="py-2 px-5 text-gray-600">
+                            <td className="py-2 h-full px-5 flex items-center justify-center text-gray-600">
                               <NavLink to={`edit/${category.id}`}>
-                                <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                  Update Category
-                                </button>
+                                <EditButton />
                               </NavLink>
-                              <button
-                                className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                onClick={() => {
+
+                              <DeleteButton
+                                click={() => {
                                   toggleIsDelete();
                                   setId(category.id);
                                 }}
-                              >
-                                Delete
-                              </button>
+                              />
                             </td>
                           </tr>
                         );
@@ -181,26 +171,23 @@ function Category() {
                               </td>
                               <td className="py-2 px-5 text-gray-600">
                                 <img
-                                  src={`https://api.hamroelectronics.com.np/${dat.photopath}`}
+                                  src={`https://api.hamroelectronics.com.np/public/${dat.photopath}`}
                                   alt=""
                                   className="w-32 border border-gray-400 rounded-md shadow-md p-1"
                                 />
                               </td>
 
-                              <td className="py-2 px-5 text-gray-600">
+                              <td className="py-2 h-full px-5 flex items-center justify-center text-gray-600">
                                 <NavLink to={`edit/${dat.id}`}>
-                                  <button className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                                    Update Category
-                                  </button>
+                                  <EditButton />
                                 </NavLink>
-                                <button
-                                  className="px-6 py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                                  onClick={() => {
-                                    toggleIsDelete;
+
+                                <DeleteButton
+                                  click={() => {
+                                    toggleIsDelete();
+                                    setId(dat.id);
                                   }}
-                                >
-                                  Delete
-                                </button>
+                                />
                               </td>
                             </tr>
                           );
