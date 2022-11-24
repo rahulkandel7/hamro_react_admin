@@ -7,6 +7,7 @@ import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
+import ServerError from "../../500";
 
 function Coupon() {
   const fetcher = (...args) =>
@@ -55,7 +56,7 @@ function Coupon() {
   }
 
   if (error) {
-    return <h1>Error</h1>;
+    return <ServerError />;
   }
 
   if (!error && !data) {

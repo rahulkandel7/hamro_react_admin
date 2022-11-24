@@ -9,6 +9,7 @@ import Spinner from "../../../components/utils/Spinner";
 
 import DeleteButton from "../../../components/utils/buttons/DeleteButton";
 import EditButton from "../../../components/utils/buttons/EditButton";
+import ServerError from "../../500";
 
 function Ads() {
   //* For Fetching Data
@@ -58,7 +59,7 @@ function Ads() {
   const navigate = useNavigate();
   //! Show Error
   if (error) {
-    return <>{error}</>;
+    return <ServerError />;
   }
 
   //*Show Loading

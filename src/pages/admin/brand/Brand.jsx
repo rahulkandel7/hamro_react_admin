@@ -7,6 +7,7 @@ import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import Spinner from "../../../components/utils/Spinner";
+import ServerError from "../../500";
 
 function Category() {
   //* For Fetching Data
@@ -58,11 +59,7 @@ function Category() {
 
   //! Show Error
   if (error) {
-    return (
-      <div>
-        <img src="/error.svg" alt="Error" className="w-screen h-screen" />
-      </div>
-    );
+    return <ServerError />;
   }
 
   //*Show Loading

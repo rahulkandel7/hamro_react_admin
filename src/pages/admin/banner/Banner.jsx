@@ -6,7 +6,7 @@ import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
 import Spinner from "../../../components/utils/Spinner";
-import Error from "../../500";
+import ServerError from "../../500";
 
 function Banner() {
   //* For Fetching Data
@@ -56,7 +56,7 @@ function Banner() {
   const navigate = useNavigate();
   //! Show Error
   if (error) {
-    return <Error />;
+    return <ServerError />;
   }
 
   //*Show Loading
