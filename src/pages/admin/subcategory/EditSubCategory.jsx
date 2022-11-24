@@ -5,6 +5,8 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import AddButton from "../../../components/utils/AddButton";
 import { toast } from "react-toastify";
+import ServerError from "../../500";
+import Spinner from "../../../components/utils/Spinner";
 
 function EditSubCategory() {
   const subCategorySchema = object({
@@ -35,7 +37,11 @@ function EditSubCategory() {
   const navigate = useNavigate();
 
   if (subCategoryError) {
-    return <h1>Error While Loading</h1>;
+    return <ServerError />;
+  }
+
+  if (!subCategoryError && !subCategoryData) {
+    return <Spinner />;
   }
 
   if (subCategoryData) {

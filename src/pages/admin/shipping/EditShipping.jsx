@@ -6,6 +6,8 @@ import AdminLayout from "../../../components/admin/AdminLayout";
 import AddButton from "../../../components/utils/AddButton";
 import { toast } from "react-toastify";
 import useSWR from "swr";
+import ServerError from "../../500";
+import Spinner from "../../../components/utils/Spinner";
 
 function EditShipping() {
   const fetcher = (...args) =>
@@ -25,6 +27,14 @@ function EditShipping() {
   });
 
   const navigate = useNavigate();
+
+  if (error) {
+    return <ServerError />;
+  }
+
+  if (!error && !data) {
+    return <Spinner />;
+  }
 
   if (data) {
     return (

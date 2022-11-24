@@ -5,6 +5,8 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import { toast } from "react-toastify";
+import Spinner from "../../../components/utils/Spinner";
+import ServerError from "../../500";
 
 function EditBanner() {
   const bannerSchema = object({
@@ -25,11 +27,11 @@ function EditBanner() {
   );
 
   if (error) {
-    return <div>{error}</div>;
+    return <ServerError />;
   }
 
   if (!error && !data) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
   if (data) {
     return (
