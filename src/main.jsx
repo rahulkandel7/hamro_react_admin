@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "remixicon/fonts/remixicon.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //* For toaster
@@ -40,6 +39,7 @@ import App from "./App";
 import Ads from "./pages/admin/ads/Ads";
 import AddAds from "./pages/admin/ads/AddAds";
 import EditAds from "./pages/admin/ads/EditAds";
+import Order from "./pages/admin/orders/Order";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -103,6 +103,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route index element={<Ads />} />
               <Route path="create" element={<AddAds />} />
               <Route path="edit/:id" element={<EditAds />} />
+            </Route>
+
+            {/* Order Route */}
+            <Route path="order">
+              <Route index element={<Order />} />
             </Route>
           </Route>
         </Routes>

@@ -22,7 +22,7 @@ function Dashboard() {
   const [change, setChange] = useState(false);
   useEffect(() => {
     if (data) {
-      sessionStorage.setItem("orderCount", data?.data?.length);
+      localStorage.setItem("orderCount", data?.data?.length);
     }
   }, [change]);
 
@@ -39,7 +39,7 @@ function Dashboard() {
         <AdminLayout>
           <h1>THis is dashboard of admin pabel</h1>
 
-          {data.data.length != sessionStorage.getItem("orderCount") ? (
+          {data.data.length != localStorage.getItem("orderCount") ? (
             <div
               className="fixed top-0 bottom-0 right-0 left-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
               onLoad={() => playAudio()}
