@@ -82,7 +82,7 @@ function EditShipping() {
                         value={values.area_name}
                         onChange={handleChange}
                         placeholder="Enter Shipping Area Name"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.area_name}
@@ -99,7 +99,7 @@ function EditShipping() {
                         value={values.price}
                         onChange={handleChange}
                         placeholder="Enter Shipping Area Price"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.price}

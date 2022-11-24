@@ -7,9 +7,8 @@ import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
 import Spinner from "../../../components/utils/Spinner";
 
-// Icons
-import { CiTrash } from "react-icons/ci";
-import { TbEditCircle } from "react-icons/tb";
+import DeleteButton from "../../../components/utils/buttons/DeleteButton";
+import EditButton from "../../../components/utils/buttons/EditButton";
 
 function Ads() {
   //* For Fetching Data
@@ -123,19 +122,14 @@ function Ads() {
 
                         <td className="py-2 flex items-center px-5 text-gray-600">
                           <NavLink to={`edit/${ads.id}`}>
-                            <button className="px-6 flex items-center py-1 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2">
-                              <TbEditCircle className="mr-2" /> Update
-                            </button>
+                            <EditButton />
                           </NavLink>
-                          <button
-                            className="px-6 flex items-center py-1 rounded-md shadow-lg hover:shadow-xl bg-red-500 hover:bg-red-700 text-white mx-2"
-                            onClick={() => {
+                          <DeleteButton
+                            click={() => {
                               toggleIsDelete();
                               setId(ads.id);
                             }}
-                          >
-                            <CiTrash className="mr-2" /> Delete
-                          </button>
+                          />
                         </td>
                       </tr>
                     );

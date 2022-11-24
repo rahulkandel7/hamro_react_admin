@@ -169,7 +169,7 @@ function EditProduct() {
                             id="name"
                             onChange={handleChange}
                             value={values.name}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.name}
@@ -187,7 +187,7 @@ function EditProduct() {
                             id="sku"
                             value={values.sku}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.sku}
@@ -207,7 +207,7 @@ function EditProduct() {
                             name="category_id"
                             onChange={handleChange}
                             id="category_id"
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           >
                             <option value="">Select Category</option>
                             {!categoryData ? (
@@ -250,7 +250,7 @@ function EditProduct() {
                             name="sub_category_id"
                             onChange={handleChange}
                             id="sub_category_id"
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           >
                             <option value="">Select Category</option>
                             {!subcategoryData ? (
@@ -297,7 +297,7 @@ function EditProduct() {
                             name="brand_id"
                             onChange={handleChange}
                             id="brand_id"
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           >
                             <option value="">Select Brand</option>
                             {!brandData ? (
@@ -335,7 +335,7 @@ function EditProduct() {
                             id="price"
                             value={values.price}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.price}
@@ -356,7 +356,7 @@ function EditProduct() {
                             id="discountedprice"
                             value={values.discountedprice}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.discountedprice}
@@ -374,7 +374,7 @@ function EditProduct() {
                             id="stock"
                             value={values.stock}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.stock}
@@ -460,7 +460,7 @@ function EditProduct() {
                             id="color"
                             value={values.color}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.color}
@@ -478,7 +478,7 @@ function EditProduct() {
                             id="size"
                             value={values.size}
                             onChange={handleChange}
-                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                            className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                           />
                           <p className="text-sm text-red-500 pb-3">
                             {errors.size}
@@ -561,7 +561,7 @@ function EditProduct() {
                                   e.currentTarget.files[0]
                                 );
                               }}
-                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                             />
                             <p className="text-sm text-red-500 pb-3">
                               {errors.photopath1}
@@ -599,7 +599,7 @@ function EditProduct() {
                                   e.currentTarget.files[0]
                                 );
                               }}
-                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                             />
                             <p className="text-sm text-red-500 pb-3">
                               {errors.photopath2}
@@ -637,7 +637,7 @@ function EditProduct() {
                                   e.currentTarget.files[0]
                                 );
                               }}
-                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                              className="file:border-none file:bg-red-400 file:text-white file:hover:bg-red-500 w-full file:shadow-gray-100 file:rounded-md file:shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                             />
                             <p className="text-sm text-red-500 pb-3">
                               {errors.photopath3}

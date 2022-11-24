@@ -99,7 +99,7 @@ function EditSubCategory() {
                         placeholder="Enter Sub Category Name"
                         value={values.subcategory_name}
                         onChange={handleChange}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.subcategory_name}
@@ -117,7 +117,7 @@ function EditSubCategory() {
                         placeholder="Enter Sub Category Priority"
                         onChange={handleChange}
                         value={values.priority}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.priority}
@@ -135,7 +135,7 @@ function EditSubCategory() {
                         name="category_id"
                         id="category_id"
                         onChange={handleChange}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       >
                         <option disabled selected>
                           -- Select Category --

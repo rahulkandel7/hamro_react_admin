@@ -78,7 +78,7 @@ function Coupon() {
                   type="text"
                   name="search"
                   id="search"
-                  className="border border-gray-200 pl-2 outline-none focus-visible:border-gray-600 pr-6 text-gray-500 rounded-md shadow-md py-1"
+                  className="border border-gray-200 pl-2 outline-none focus-visible:border-indigo-600 pr-6 text-gray-500 rounded-md shadow-md py-1"
                   placeholder="Search Coupon..."
                   onChange={(e) => {
                     setSearch(e.target.value);

@@ -94,7 +94,7 @@ function EditCoupon() {
                         value={values.name}
                         onChange={handleChange}
                         placeholder="Enter Coupon Name"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">{errors.name}</p>
                     </div>
@@ -110,7 +110,7 @@ function EditCoupon() {
                         name="isAvailable"
                         id="isAvailable"
                         onChange={handleChange}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       >
                         <option
                           value="1"
@@ -138,7 +138,7 @@ function EditCoupon() {
                         name="isAmount"
                         id="isAmount"
                         onChange={handleChange}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       >
                         <option
                           value="1"
@@ -172,7 +172,7 @@ function EditCoupon() {
                         onChange={handleChange}
                         value={values.offerAmount}
                         placeholder="Enter Offer Amount"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.offerAmount}
@@ -187,7 +187,7 @@ function EditCoupon() {
                         name="isPercent"
                         id="isPercent"
                         onChange={handleChange}
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       >
                         <option selected={true} disabled={true}>
                           --- IS Percent ---
@@ -224,7 +224,7 @@ function EditCoupon() {
                         value={values.offerPercent}
                         onChange={handleChange}
                         placeholder="Enter Offer Percentage"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.offerPercent}
@@ -242,7 +242,7 @@ function EditCoupon() {
                         onChange={handleChange}
                         value={values.minAmount}
                         placeholder="Enter Minium Amount To Apply Coupon"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.minAmount}
@@ -263,7 +263,7 @@ function EditCoupon() {
                         onChange={handleChange}
                         value={values.maxDisAmount}
                         placeholder="Enter Maximum Amount For Coupon"
-                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-gray-600 my-2"
+                        className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                       />
                       <p className="text-sm text-red-500 pb-3">
                         {errors.maxDisAmount}
