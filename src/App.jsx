@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const navigate = useNavigate();
@@ -11,6 +11,12 @@ function App() {
     email: string().email().required(),
     password: string().required(),
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/admin/dashboard");
+    }
+  }, []);
 
   const [loading, setLoading] = useState(false);
   return (

@@ -40,6 +40,8 @@ import Ads from "./pages/admin/ads/Ads";
 import AddAds from "./pages/admin/ads/AddAds";
 import EditAds from "./pages/admin/ads/EditAds";
 import Order from "./pages/admin/orders/Order";
+import ViewOrder from "./pages/admin/orders/viewOrder";
+import PrintOrder from "./pages/admin/orders/PrintOrder";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -108,6 +110,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             {/* Order Route */}
             <Route path="order">
               <Route index element={<Order />} />
+              <Route path="view/:id" element={<ViewOrder />} />
+              <Route path="print/:id" element={<PrintOrder />} />
             </Route>
           </Route>
         </Routes>

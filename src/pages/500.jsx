@@ -4,7 +4,9 @@ function ServerError() {
       <div className="w-full h-screen bg-gray-100">
         <div className="flex items-center justify-center h-screen">
           <div>
-            <h1 class="text-9xl  text-gray-400 font-bold text-center">500</h1>
+            <h1 className="text-9xl  text-gray-400 font-bold text-center">
+              500
+            </h1>
             <h3 className="pt-5 text-xl max-w-sm text-center text-gray-700">
               Sorry, we are having some technical issues.
             </h3>
