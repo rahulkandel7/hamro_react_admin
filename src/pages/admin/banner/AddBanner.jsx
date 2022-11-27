@@ -10,6 +10,7 @@ function AddBanner() {
   const bannerSchema = object({
     priority: number().required("Priority is Required"),
     photopath: mixed().required("Photo is Required"),
+    available: string().required("Availability is Required"),
   });
   return (
     <>
@@ -18,13 +19,14 @@ function AddBanner() {
           <h1 className="text-gray-700 text-2xl py-3 font-bold">Add Banner</h1>
           <hr className="border border-gray-300" />
           <Formik
-            initialValues={{ priority: "", photopath: "" }}
+            initialValues={{ priority: "", photopath: "", available: "" }}
             validateOnChange={false}
             validationSchema={bannerSchema}
             onSubmit={async (values) => {
               const formData = new FormData();
               formData.append("priority", values.priority);
               formData.append("photopath", values.photopath);
+              formData.append("available", values.available);
 
               const response = await fetch(
                 "https://api.hamroelectronics.com.np/api/v1/banner",
@@ -73,6 +75,37 @@ function AddBanner() {
                     className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                   />
                   <p className="text-sm text-red-500 pb-3">{errors.priority}</p>
+
+                  {/* For Product Status */}
+                  <div className="mx-2">
+                        <label htmlFor="available" className="my-2 text-gray-500">
+                          Is Available <sup className="text-red-600">*</sup>
+                        </label>
+                        <input
+                          type="radio"
+                          name="available"
+                          id="available"
+                          value={1}
+                          onChange={handleChange}
+                          className="mx-2"
+                        />
+                        <span className="text-gray-500 ">Yes</span>
+
+                        <input
+                          type="radio"
+                          name="available"
+                          id="available"
+                          value={0}
+                          onChange={handleChange}
+                          className="mx-2"
+                        />
+                        <span className="text-gray-500 ">No</span>
+                        <p className="text-sm text-red-500 pb-3">
+                          {errors.available}
+                        </p>
+                      </div>
+
+                      
 
                   <p className="my-2 text-gray-500 ">Select Photo</p>
                   <label htmlFor="photopath" className="my-2 text-gray-500 ">

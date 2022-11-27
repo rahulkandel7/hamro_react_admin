@@ -12,6 +12,7 @@ import { RiEBike2Line } from "react-icons/ri";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { RiMenu2Fill } from "react-icons/ri";
+import {HiOutlineTrash} from 'react-icons/hi';
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -77,6 +78,11 @@ function Sidebar() {
       name: "Orders",
       icon: <RiEBike2Line className="mr-2" title="Orders" />,
       link: "/admin/order",
+    },
+    {
+      name: "Trash",
+      icon: <HiOutlineTrash className="mr-2" title="Trash" />,
+      link: "/admin/trash",
     },
   ];
 

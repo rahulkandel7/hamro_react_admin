@@ -42,6 +42,7 @@ import EditAds from "./pages/admin/ads/EditAds";
 import Order from "./pages/admin/orders/Order";
 import ViewOrder from "./pages/admin/orders/viewOrder";
 import PrintOrder from "./pages/admin/orders/PrintOrder";
+import Trash from "./pages/admin/trash/Trash";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -112,6 +113,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route index element={<Order />} />
               <Route path="view/:id" element={<ViewOrder />} />
               <Route path="print/:id" element={<PrintOrder />} />
+            </Route>
+
+            {/* Trash Route */}
+            <Route path="trash">
+              <Route index element={<Trash />} />
             </Route>
           </Route>
         </Routes>

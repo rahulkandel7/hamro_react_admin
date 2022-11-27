@@ -12,6 +12,7 @@ function EditBanner() {
   const bannerSchema = object({
     priority: number().required("Priority is Required"),
     photopath: mixed().nullable(),
+    available: string().required("Availability is Required"),
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -45,12 +46,14 @@ function EditBanner() {
               <Formik
                 initialValues={{
                   priority: data.data.priority,
+                  available: data.data.available,
                 }}
                 validateOnChange={false}
                 validationSchema={bannerSchema}
                 onSubmit={async (values) => {
                   const formData = new FormData();
                   formData.append("priority", values.priority);
+                  formData.append("available", values.available);
                   formData.append("_method", "put");
                   formData.append(
                     "photopath",
@@ -112,6 +115,39 @@ function EditBanner() {
                       <p className="text-sm text-red-500 pb-3">
                         {errors.priority}
                       </p>
+
+                      {/* For Product Status */}
+                  <div className="mx-2">
+                        <label htmlFor="available" className="my-2 text-gray-500">
+                          Is Available <sup className="text-red-600">*</sup>
+                        </label>
+                        <input
+                          type="radio"
+                          name="available"
+                          id="available"
+                          checked={values.available === "1"}
+                          value={1}
+                          onChange={handleChange}
+                          className="mx-2"
+                        />
+                        <span className="text-gray-500 ">Yes</span>
+
+                        <input
+                          type="radio"
+                          name="available"
+                          id="available"
+                          checked={values.available === "0"}
+                          value={0}
+                          onChange={handleChange}
+                          className="mx-2"
+                        />
+                        <span className="text-gray-500 ">No</span>
+                        <p className="text-sm text-red-500 pb-3">
+                          {errors.available}
+                        </p>
+                      </div>
+
+                      
 
                       <p className="my-2 text-gray-500 ">Select Photo</p>
                       <label
