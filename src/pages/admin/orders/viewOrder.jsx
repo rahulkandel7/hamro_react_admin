@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { BsCheck2Circle } from "react-icons/bs";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { TiTimesOutline } from "react-icons/ti";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
+import Conformation from "../../../components/admin/utils/Conformation";
 import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
 
@@ -20,15 +23,40 @@ function ViewOrder() {
     `https://api.hamroelectronics.com.np/api/v1/ordercart/${params.id}`,
     fetcher
   );
+
+  function updateStatus(id,status){
+    fetch(`https://api.hamroelectronics.com.np/api/v1/order/cart/update/${id}/${status}`,{
+      headers:{
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      }
+    }).then(res=>res.json()).then(data=>{
+      toast(data.message,{
+        type: 'success',
+        });
+      mutate(data);
+    });
+    }
+
+    const [isPressed,setIsPressed] = useState(false);
+    const [name,setName] = useState('');
+    const [cartId,setCartId] = useState();
+
   if (error) return <ServerError />;
 
   if (!data) return <Spinner />;
 
   if (data) {
-    console.log(data);
+
     return (
       <>
         <AdminLayout>
+        {isPressed ? (
+            <Conformation
+              hide={() => setIsPressed(false)}
+              name={name}
+              action={() => updateStatus(cartId, name)}
+            />
+          ) : null}
           <div className="px-10 py-6 w-full">
             <div className="flex justify-between">
               <h1 className="text-4xl text-gray-700">Manage Orders</h1>
@@ -60,7 +88,7 @@ function ViewOrder() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data.map((cart, index) => {
+                  {data?.data?.map((cart, index) => {
                     return (
                       <tr>
                         <td className="py-2 px-5 ">{index + 1}</td>
@@ -84,6 +112,11 @@ function ViewOrder() {
                           <button
                             className="py-2 px-5 bg-amber-600 hover:bg-amber-700 text-white rounded-md mr-2 "
                             title="Pending"
+                            onClick={() => {
+                                    setCartId(cart.id);
+                                    setName("pending");
+                                    setIsPressed(true);
+                                  }}
                           >
                             <MdOutlinePendingActions />
                           </button>
@@ -91,11 +124,22 @@ function ViewOrder() {
                           <button
                             className="py-2 px-5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md mr-2 "
                             title="Completed"
+                            onClick={() => {
+                              setCartId(cart.id);
+                              setName("completed");
+                              setIsPressed(true);
+                            }}
                           >
                             <BsCheck2Circle />
                           </button>
 
-                          <button className="py-2 px-5 bg-red-600 hover:bg-red-700 text-white rounded-md mr-2 ">
+                          <button className="py-2 px-5 bg-red-600 hover:bg-red-700 text-white rounded-md mr-2 " title="cancelled" 
+                            onClick={() => {
+                              setCartId(cart.id);
+                              setName("cancelled");
+                              setIsPressed(true);
+                            }}
+                          >
                             <TiTimesOutline />
                           </button>
                         </td>

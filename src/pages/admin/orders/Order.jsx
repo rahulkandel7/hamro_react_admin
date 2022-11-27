@@ -69,17 +69,17 @@ function Order() {
   //* For Deleteing Category
 
   async function deleteOrder(id) {
-    const category = await fetch(
+    const order = await fetch(
       `https://api.hamroelectronics.com.np/api/v1/order/delete/${id}`,
       {
-        method: "delete",
+
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
-    category.json().then((data) => {
+    order.json().then((data) => {
       toast(data.message, {
         type: "success",
       });
