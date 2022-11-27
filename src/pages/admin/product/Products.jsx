@@ -87,7 +87,7 @@ function Product() {
 
   //? Show Data when loaded
   if (data && categoryData) {
-
+console.log(data);
     return (
       <>
         <AdminLayout>
@@ -184,7 +184,7 @@ function Product() {
                           </td>
 
                           <td className="py-2 px-5 text-gray-600">
-                            {product.deleted ? "Yes" : "No"}
+                            {product.deleted == 1 ? "Yes" : "No"}
                           </td>
 
                           <td className="py-2 px-5 text-gray-600 flex text-lg">
@@ -262,7 +262,7 @@ function Product() {
                             </td>
 
                             <td className="py-2 px-5 text-gray-600">
-                              {dat.deleted == 0 ? "Yes" : "No"}
+                              {dat.deleted == 1 ? "Yes" : "No"}
                             </td>
 
                             <td className="py-2 px-5 text-gray-600 flex text-lg">
@@ -348,7 +348,7 @@ function Product() {
                          </td>
 
                          <td className="py-2 px-5 text-gray-600">
-                           {product.deleted ? "Yes" : "No"}
+                           {product.deleted == 1 ? "Yes" : "No"}
                          </td>
 
                          <td className="py-2 px-5 text-gray-600 flex text-lg">
@@ -426,7 +426,7 @@ function Product() {
                            </td>
 
                            <td className="py-2 px-5 text-gray-600">
-                             {dat.deleted == 0 ? "Yes" : "No"}
+                             {dat.deleted == 1 ? "Yes" : "No"}
                            </td>
 
                            <td className="py-2 px-5 text-gray-600 flex text-lg">
