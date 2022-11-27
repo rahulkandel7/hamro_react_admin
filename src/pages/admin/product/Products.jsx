@@ -144,7 +144,6 @@ function Category() {
                   <td className="py-2 px-5 ">SKU</td>
                   <td className="py-2 px-5 ">Name</td>
                   <td className="py-2 px-5 ">Image</td>
-                  <td className="py-2 px-5 ">Category Name</td>
                   <td className="py-2 px-5 ">Price</td>
                   <td className="py-2 px-5 ">Stock</td>
                   <td className="py-2 px-5 ">Flash Sale </td>
@@ -170,10 +169,6 @@ function Category() {
                               alt=""
                               className="w-32 border border-gray-400 rounded-md shadow-md p-1"
                             />
-                          </td>
-
-                          <td className="py-2 px-5 text-gray-600">
-                            {product.categoryName}
                           </td>
 
                           <td className="py-2 px-5 text-gray-600">
@@ -255,10 +250,6 @@ function Category() {
                             </td>
 
                             <td className="py-2 px-5 text-gray-600">
-                              {dat.category_id}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
                               {dat.price}
                             </td>
 
@@ -317,7 +308,6 @@ function Category() {
                  <td className="py-2 px-5 ">SKU</td>
                  <td className="py-2 px-5 ">Name</td>
                  <td className="py-2 px-5 ">Image</td>
-                 <td className="py-2 px-5 ">Category Name</td>
                  <td className="py-2 px-5 ">Price</td>
                  <td className="py-2 px-5 ">Stock</td>
                  <td className="py-2 px-5 ">Flash Sale </td>
@@ -343,10 +333,6 @@ function Category() {
                              alt=""
                              className="w-32 border border-gray-400 rounded-md shadow-md p-1"
                            />
-                         </td>
-
-                         <td className="py-2 px-5 text-gray-600">
-                           {product.categoryName}
                          </td>
 
                          <td className="py-2 px-5 text-gray-600">
@@ -425,10 +411,6 @@ function Category() {
                                alt=""
                                className="w-32 border border-gray-400 rounded-md shadow-md p-1"
                              />
-                           </td>
-
-                           <td className="py-2 px-5 text-gray-600">
-                             {dat.category_id}
                            </td>
 
                            <td className="py-2 px-5 text-gray-600">
