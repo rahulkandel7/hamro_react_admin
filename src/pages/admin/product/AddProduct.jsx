@@ -49,7 +49,7 @@ function AddProduct() {
     brand_id: number().required("Please seelct brand for the products"),
     sku: number().required("SKU is required"),
     flashsale: number().required("Choose to show in falsh sale or not"),
-    status: number().required("Choose to product Status"),
+    available: number().required("Choose to product Status"),
     color: string().required("Color is required"),
     size: string().required("Size is required"),
   });
@@ -80,7 +80,7 @@ function AddProduct() {
                   brand_id: "",
                   sku: Math.floor(Math.random() * 10000000000),
                   flashsale: false,
-                  status: true,
+                  available: true,
                   color: "",
                   size: "",
                 }}
@@ -100,7 +100,7 @@ function AddProduct() {
                   formData.append("brand_id", values.brand_id);
                   formData.append("sku", values.sku);
                   formData.append("flashsale", values.flashsale);
-                  formData.append("status", values.status);
+                  formData.append("available", values.available);
                   formData.append("color", values.color);
                   formData.append("size", values.size);
 
@@ -369,13 +369,13 @@ function AddProduct() {
 
                       {/* For Product Status */}
                       <div className="mx-2">
-                        <label htmlFor="status" className="my-2 text-gray-500">
+                        <label htmlFor="available" className="my-2 text-gray-500">
                           Is Available <sup className="text-red-600">*</sup>
                         </label>
                         <input
                           type="radio"
-                          name="status"
-                          id="status"
+                          name="available"
+                          id="available"
                           value={1}
                           onChange={handleChange}
                           className="mx-2"
@@ -384,15 +384,15 @@ function AddProduct() {
 
                         <input
                           type="radio"
-                          name="status"
-                          id="status"
+                          name="available"
+                          id="available"
                           value={0}
                           onChange={handleChange}
                           className="mx-2"
                         />
                         <span className="text-gray-500 ">No</span>
                         <p className="text-sm text-red-500 pb-3">
-                          {errors.status}
+                          {errors.available}
                         </p>
                       </div>
 

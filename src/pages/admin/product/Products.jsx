@@ -13,7 +13,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { CiTrash } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
 
-function Category() {
+function Product() {
   //* For Fetching Data
   const fetcher = (...args) =>
     fetch(...args, {
@@ -34,7 +34,7 @@ function Category() {
   const [categoryId, setCategoryId] = useState(0);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    setProducts(data.data.filter((product) => product.category_id == categoryId));
+    setProducts(data?.data?.filter((product) => product.category_id == categoryId));
   }, [categoryId]);
 
 
@@ -55,9 +55,9 @@ function Category() {
 
   //* For Deleteing Category
 
-  async function deleteCategory(id) {
-    fetch(`https://api.hamroelectronics.com.np/api/v1/product/${id}`, {
-      method: "delete",
+  async function deleteProduct(id) {
+    fetch(`https://api.hamroelectronics.com.np/api/v1/product/delete/${id}`, {
+
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -93,7 +93,7 @@ function Category() {
         <AdminLayout>
           {isDelete ? (
             <ShowDelete
-              delete={deleteCategory}
+              delete={deleteProduct}
               hideDelete={toggleIsDelete}
               id={id}
             />
@@ -317,7 +317,7 @@ function Category() {
              </thead>
              <tbody>
                {search === ""
-                 ? products.map((product) => {
+                 ? products?.map((product) => {
                      return (
                        <tr key={product.id}>
                          <td className="py-2 px-5 text-gray-600">
@@ -474,4 +474,4 @@ function Category() {
   }
 }
 
-export default Category;
+export default Product;
