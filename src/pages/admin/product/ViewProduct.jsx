@@ -39,11 +39,21 @@ function ViewProduct() {
         <AdminLayout>
           <div className="">
             <div className="h-fit w-full bg-gray-50  shadow-lg">
-              <div className=" p-5 rounded-lg">
-                <h1 className="text-gray-800 py-4 font-semibold text-4xl">
+              <div className="px-6 pt-3 flex items-center justify-between">
+                <h1 className="text-3xl font-bold">Product Details</h1>
+                <button
+                  className="px-6 py-1 bg-indigo-500 hover:bg-indigo-600 rounded-full text-white shadow-md"
+                  onClick={() => navigate("/admin/products")}
+                >
+                  Go Back
+                </button>
+              </div>
+              <hr className="my-2" />
+              <div className=" p-5 pt-0 rounded-lg">
+                <h1 className="text-gray-800 pb-4 font-semibold text-2xl">
                   {productdata.data.name}
                 </h1>
-                <hr />
+
                 {/* For Product Image */}
                 <div className="flex">
                   {/* First Image */}
@@ -53,7 +63,7 @@ function ViewProduct() {
                     <div className="w-[250px] h-[300px] border-2 border-dashed flex items-center justify-center ">
                       {productdata.data.photopath1 ? (
                         <img
-                          src={`https://api.hamroelectronics.com.np/${productdata.data.photopath1}`}
+                          src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath1}`}
                           className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1"
                           alt=""
                         />
@@ -67,7 +77,7 @@ function ViewProduct() {
                     <div className="w-[250px] h-[300px] border-2 border-dashed flex items-center justify-center ">
                       {productdata.data.photopath2 ? (
                         <img
-                          src={`https://api.hamroelectronics.com.np/${productdata.data.photopath2}`}
+                          src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath2}`}
                           className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1"
                           alt=""
                         />
@@ -81,7 +91,7 @@ function ViewProduct() {
                     <div className="w-[250px] h-[300px] border-2 border-dashed flex items-center justify-center ">
                       {productdata.data.photopath3 ? (
                         <img
-                          src={`https://api.hamroelectronics.com.np/${productdata.data.photopath3}`}
+                          src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath3}`}
                           className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1"
                           alt=""
                         />
@@ -118,29 +128,46 @@ function ViewProduct() {
 
                     <p className="text-gray-400 py-2">
                       Color:{" "}
-                      <span className="text-gray-800 font-bold px-1">Red</span>
+                      <span className="text-gray-800 font-bold px-1">
+                        {productdata.data.color}
+                      </span>
                     </p>
 
                     <p className="text-gray-400 py-2">
                       Size:{" "}
-                      <span className="text-gray-800 font-bold px-1">4GB</span>
+                      <span className="text-gray-800 font-bold px-1">
+                        {productdata.data.size}
+                      </span>
                     </p>
 
-                    <div className="mt-2">
-                      <p className="text-gray-800 font-bold text-xl">
-                        ${productdata.data.discountedprice}
-                      </p>
-                      <p className="text-gray-400 line-through font-bold text-sm">
-                        ${productdata.data.price}
-                      </p>
-                    </div>
+                    {productdata.data.discountedpricee > 0 ? (
+                      <div>
+                        <div className="mt-2">
+                          <p className="text-gray-800 font-bold text-xl">
+                            Rs {productdata.data.discountedprice}
+                          </p>
+                          <p className="text-gray-400 line-through font-bold text-sm">
+                            Rs {productdata.data.price}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="mt-2">
+                        <p className="text-gray-600 font-bold text-lg">
+                          Rs {productdata.data.price}
+                        </p>
+                      </div>
+                    )}
 
                     <h1 className="text-xl text-gray-700 font-semibold mt-3">
                       Description
                     </h1>
-                    <p className="text-sm text-gray-500 text-justify py-2">
-                      {productdata.data.description}
-                    </p>
+                    <p
+                      className="text-sm text-gray-500 text-justify py-2"
+                      dangerouslySetInnerHTML={{
+                        __html: productdata.data.description,
+                      }}
+                    ></p>
                   </div>
                 </div>
               </div>
