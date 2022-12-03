@@ -8,6 +8,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import AddIcon from "../../../components/admin/utils/AddIcon";
 
 function AddProduct() {
   //* For Fetching Data
@@ -488,7 +489,7 @@ function AddProduct() {
                                   alt=""
                                 />
                               ) : (
-                                <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                <AddIcon />
                               )}
                             </div>
                           </label>
@@ -526,7 +527,7 @@ function AddProduct() {
                                   alt=""
                                 />
                               ) : (
-                                <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                <AddIcon />
                               )}
                             </div>
                           </label>
@@ -564,7 +565,7 @@ function AddProduct() {
                                   alt=""
                                 />
                               ) : (
-                                <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                <AddIcon />
                               )}
                             </div>
                           </label>

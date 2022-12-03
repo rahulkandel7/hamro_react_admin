@@ -72,7 +72,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             {/* Sub Category Route */}
             <Route path="subcategory">
               <Route index element={<SubCategory />} />
-              <Route path="create" element={<AddSubCategory />} />
+              <Route path="create/:id" element={<AddSubCategory />} />
               <Route path="edit/:id" element={<EditSubCategory />} />
             </Route>
             {/* Brand Route */}

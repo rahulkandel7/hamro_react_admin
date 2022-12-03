@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { string, object, number } from "yup";
 
@@ -13,6 +13,8 @@ function AddSubCategory() {
     priority: string().required("Priority is required"),
     category_id: number().required("Please Choose Category"),
   });
+
+  const params = useParams();
 
   const fetcher = (...args) =>
     fetch(...args, {
@@ -129,7 +131,7 @@ function AddSubCategory() {
                       ) : categoryData ? (
                         categoryData.data.map((category) => {
                           return (
-                            <option value={category.id} key={category.id}>
+                            <option value={category.id} key={category.id} selected={params.id == category.id ? true : false}>
                               {category.category_name}
                             </option>
                           );
