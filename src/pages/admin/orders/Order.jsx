@@ -174,6 +174,7 @@ function Order() {
                     <td className="py-2 px-5 ">Phone Number</td>
                     <td className="py-2 px-5 ">Address</td>
                     <td className="py-2 px-5 ">Area</td>
+                    <td className="py-2 px-5 ">Coupon Name</td>
                     <td className="py-2 px-5 ">Payment</td>
                     <td className="py-2 px-5 ">Total Price</td>
                     <td className="py-2 px-5 ">Status</td>
@@ -202,6 +203,7 @@ function Order() {
                             {order.shipping_address}
                           </td>
                           <td className="py-2 px-5 ">{order.shipping_area}</td>
+                          <td className="py-2 px-5 ">{order.couponname == null ? "-" : order.couponname}</td>
                           <td className="py-2 px-5 ">{order.payment}</td>
                           <td className="py-2 px-5 ">
                             Rs.{" "}
