@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { string, object, number } from "yup";
 
@@ -30,7 +30,10 @@ function AddSubCategory() {
 
   //? Navigator
   const navigate = useNavigate();
+
+  const { state } = useLocation();
   return (
+
     <>
       <AdminLayout>
         <div className="py-10 px-6 w-full">
@@ -45,7 +48,7 @@ function AddSubCategory() {
           <Formik
             initialValues={{
               subcategory_name: "",
-              priority: "",
+              priority: state + 1,
               category_id: "",
             }}
             validateOnChange={false}
@@ -70,7 +73,7 @@ function AddSubCategory() {
               });
             }}
           >
-            {({ errors, handleChange, handleSubmit }) => {
+            {({ errors, handleChange, handleSubmit, values }) => {
               return (
                 <form onSubmit={handleSubmit} className="my-5">
                   <div>
@@ -104,6 +107,7 @@ function AddSubCategory() {
                       placeholder="Enter Sub Category Priority"
                       onChange={handleChange}
                       className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
+                      value={values.priority}
                     />
                     <p className="text-sm text-red-500 pb-3">
                       {errors.priority}

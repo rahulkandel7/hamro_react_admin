@@ -76,6 +76,7 @@ function Category() {
     const priorityCategory = [...data.data].sort(
       (a, b) => a.priority - b.priority
     );
+    const categoryLength = priorityCategory.length;
     return (
       <>
         <AdminLayout>
@@ -93,7 +94,7 @@ function Category() {
             <div className="flex justify-between">
               <h1 className="text-4xl text-gray-700">Categories</h1>
 
-              <NavLink to="create">
+              <NavLink to="create" state={categoryLength}>
                 <AddButton name="Add Category" />
               </NavLink>
             </div>

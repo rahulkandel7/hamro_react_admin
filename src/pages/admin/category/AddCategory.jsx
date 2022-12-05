@@ -1,7 +1,7 @@
 import { mixed, number, object, string } from "yup";
 import { Formik } from "formik";
 import AdminLayout from "../../../components/admin/AdminLayout";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AddIcon from "../../../components/admin/utils/AddIcon";
 
@@ -12,6 +12,8 @@ function AddCategory() {
     priority: number().required("Priority is Required"),
     photopath: mixed().required("Photo is Required"),
   });
+
+  const { state } = useLocation();
   return (
     <>
       <AdminLayout>
@@ -21,7 +23,7 @@ function AddCategory() {
           </h1>
           <hr className="border border-gray-300" />
           <Formik
-            initialValues={{ category_name: "", priority: "", photopath: "" }}
+            initialValues={{ category_name: "", priority: state + 1, photopath: "" }}
             validateOnChange={false}
             validationSchema={categoryAddSchema}
             onSubmit={async (values) => {
@@ -87,6 +89,7 @@ function AddCategory() {
                     type="text"
                     name="priority"
                     id="priority"
+                    value={values.priority}
                     onChange={handleChange}
                     className="border border-gray-200 bg-gray-50 w-full shadow-gray-100 rounded-md shadow-md py-2 px-3 outline-none focus-visible:border-indigo-600 my-2"
                   />

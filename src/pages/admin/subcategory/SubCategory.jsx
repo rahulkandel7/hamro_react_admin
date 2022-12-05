@@ -79,6 +79,7 @@ function SubCategory() {
     const orderSubcategory = [...data.data].sort(
       (a, b) => a.priority - b.priority
     );
+    const totalSub = orderSubcategory.length;
     return (
       <>
         <AdminLayout>
@@ -94,7 +95,7 @@ function SubCategory() {
           <div className="px-10 py-6 w-full">
             <div className="flex justify-between">
               <h1 className="text-4xl text-gray-700">Sub Categories</h1>
-              <NavLink to="create">
+              <NavLink to="create" state={totalSub}>
                 <AddButton name="Add Sub Category" />
               </NavLink>
             </div>
