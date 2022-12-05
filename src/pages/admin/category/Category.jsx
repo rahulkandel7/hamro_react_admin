@@ -117,82 +117,82 @@ function Category() {
                 <tbody>
                   {search === ""
                     ? priorityCategory.map((category) => {
-                        return (
-                          <tr key={category.id}>
-                            <td className="py-2 px-5 text-gray-600">
-                              {category.priority}
-                            </td>
-                            <td className="py-2 px-5 text-gray-600">
-                              {category.category_name}
-                            </td>
+                      return (
+                        <tr key={category.id} className="border border-gray-200">
+                          <td className="py-2 px-5 text-gray-600">
+                            {category.priority}
+                          </td>
+                          <td className="py-2 px-5 text-gray-600">
+                            {category.category_name}
+                          </td>
 
+                          <td className="py-2 px-5 text-gray-600">
+                            <img
+                              src={`https://api.hamroelectronics.com.np/public/${category.photopath}`}
+                              alt=""
+                              className="w-32 border border-gray-400 rounded-md shadow-md p-1"
+                            />
+                          </td>
+
+                          <td className="py-2 h-full px-5 flex items-center justify-center text-gray-600">
+                            <NavLink to={`edit/${category.id}`}>
+                              <EditButton />
+                            </NavLink>
+
+                            <DeleteButton
+                              click={() => {
+                                toggleIsDelete();
+                                setId(category.id);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })
+                    : data.data
+                      .filter((category) => {
+                        if (search === "") {
+                          return category;
+                        } else if (
+                          category.category_name
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        ) {
+                          return category;
+                        }
+                      })
+                      .map((dat) => {
+                        return (
+                          <tr key={dat.id} className="border border-gray-200">
+                            <td className="py-2 px-5 text-gray-600">
+                              {dat.priority}
+                            </td>
+                            <td className="py-2 px-5 text-gray-600">
+                              {dat.category_name}
+                            </td>
                             <td className="py-2 px-5 text-gray-600">
                               <img
-                                src={`https://api.hamroelectronics.com.np/public/${category.photopath}`}
+                                src={`https://api.hamroelectronics.com.np/public/${dat.photopath}`}
                                 alt=""
                                 className="w-32 border border-gray-400 rounded-md shadow-md p-1"
                               />
                             </td>
 
                             <td className="py-2 h-full px-5 flex items-center justify-center text-gray-600">
-                              <NavLink to={`edit/${category.id}`}>
+                              <NavLink to={`edit/${dat.id}`}>
                                 <EditButton />
                               </NavLink>
 
                               <DeleteButton
                                 click={() => {
                                   toggleIsDelete();
-                                  setId(category.id);
+                                  setId(dat.id);
                                 }}
                               />
                             </td>
                           </tr>
                         );
-                      })
-                    : data.data
-                        .filter((category) => {
-                          if (search === "") {
-                            return category;
-                          } else if (
-                            category.category_name
-                              .toLowerCase()
-                              .includes(search.toLowerCase())
-                          ) {
-                            return category;
-                          }
-                        })
-                        .map((dat) => {
-                          return (
-                            <tr key={dat.id}>
-                              <td className="py-2 px-5 text-gray-600">
-                                {dat.priority}
-                              </td>
-                              <td className="py-2 px-5 text-gray-600">
-                                {dat.category_name}
-                              </td>
-                              <td className="py-2 px-5 text-gray-600">
-                                <img
-                                  src={`https://api.hamroelectronics.com.np/public/${dat.photopath}`}
-                                  alt=""
-                                  className="w-32 border border-gray-400 rounded-md shadow-md p-1"
-                                />
-                              </td>
-
-                              <td className="py-2 h-full px-5 flex items-center justify-center text-gray-600">
-                                <NavLink to={`edit/${dat.id}`}>
-                                  <EditButton />
-                                </NavLink>
-
-                                <DeleteButton
-                                  click={() => {
-                                    toggleIsDelete();
-                                    setId(dat.id);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                          );
-                        })}
+                      })}
                 </tbody>
               </table>
             </div>

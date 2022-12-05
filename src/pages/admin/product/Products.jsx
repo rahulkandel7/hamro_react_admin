@@ -153,7 +153,7 @@ function Product() {
                       {search === ""
                         ? data.data.map((product) => {
                           return (
-                            <tr key={product.id}>
+                            <tr key={product.id} className="border border-gray-200">
                               <td className="py-2 px-5 text-gray-600">
                                 {product.sku}
                               </td>
@@ -232,7 +232,7 @@ function Product() {
                           })
                           .map((dat) => {
                             return (
-                              <tr key={dat.id}>
+                              <tr key={dat.id} className="border border-gray-200">
                                 <td className="py-2 px-5 text-gray-600">
                                   {dat.sku}
                                 </td>
@@ -317,7 +317,7 @@ function Product() {
                       {search === ""
                         ? products?.map((product) => {
                           return (
-                            <tr key={product.id}>
+                            <tr key={product.id} className="border border-gray-200">
                               <td className="py-2 px-5 text-gray-600">
                                 {product.sku}
                               </td>
@@ -396,7 +396,7 @@ function Product() {
                           })
                           .map((dat) => {
                             return (
-                              <tr key={dat.id}>
+                              <tr key={dat.id} className="border border-gray-200">
                                 <td className="py-2 px-5 text-gray-600">
                                   {dat.sku}
                                 </td>

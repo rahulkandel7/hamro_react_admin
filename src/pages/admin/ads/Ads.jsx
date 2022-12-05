@@ -93,9 +93,9 @@ function Ads() {
             <hr className="my-2" />
 
             <div className="overflow-scroll">
-              <table className="w-full border border-gray-200 rounded-md shadow-md px-5">
+              <table className="w-full rounded-md shadow-md px-5">
                 <thead className="bg-gray-500 ">
-                  <tr className="w-full border border-gray-100 text-white">
+                  <tr className="w-full border border-gray-200 text-white ">
                     <td className="py-2 px-5 ">Ad Code</td>
                     <td className="py-2 px-5 ">Ad Description</td>
                     <td className="py-2 px-5 ">Ad Photo</td>
@@ -105,7 +105,7 @@ function Ads() {
                 <tbody>
                   {data.data.map((ads) => {
                     return (
-                      <tr key={ads.id}>
+                      <tr key={ads.id} className="border border-gray-200">
                         <td className="py-2 px-5 text-gray-600">
                           {ads.ad_code}
                         </td>

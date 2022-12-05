@@ -95,7 +95,7 @@ function Banner() {
             <div className="overflow-scroll">
               <table className="w-full  rounded-lg shadow-xl px-5">
                 <thead className="bg-gray-500 ">
-                  <tr className="w-full border border-gray-100 shadow-inner text-white">
+                  <tr className="w-full border border-gray-200 shadow-inner text-white">
                     <td className="py-2 px-5 ">Order</td>
                     <td className="py-2 px-5 ">Banner Photo</td>
                     <td className="py-2 px-5 ">Action</td>
@@ -104,7 +104,7 @@ function Banner() {
                 <tbody>
                   {priorityBanner.map((banner) => {
                     return (
-                      <tr key={banner.id}>
+                      <tr key={banner.id} className="border border-gray-200">
                         <td className="py-2 px-5 text-gray-600">
                           {banner.priority}
                         </td>

@@ -192,7 +192,7 @@ function Order() {
                       let d = new Date(order.created_at);
 
                       return (
-                        <tr>
+                        <tr className="border border-gray-200">
                           <td className="py-2 px-5 ">{index + 1}</td>
                           <td className="py-2 px-5 ">{order.fullname}</td>
                           <td className="py-2 px-5 ">

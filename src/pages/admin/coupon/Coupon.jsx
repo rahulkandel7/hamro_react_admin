@@ -112,8 +112,76 @@ function Coupon() {
                 <tbody>
                   {search === ""
                     ? data.data.map((coupon, index) => {
+                      return (
+                        <tr key={coupon.id} className="border border-gray-200">
+                          <td className="py-2 px-5 text-gray-600">
+                            {index + 1}
+                          </td>
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.name}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.isAvailable == 1 ? "Yes" : "No"}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.minAmount}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.maxDisAmount}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.isAmount == 1 ? "Yes" : "No"}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.offerAmount == null
+                              ? "-"
+                              : `Rs ${coupon.offerAmount}`}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.isPercent == 1 ? "Yes" : "No"}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600">
+                            {coupon.offerPercent == null
+                              ? "-"
+                              : `${coupon.offerPercent} %`}
+                          </td>
+
+                          <td className="py-2 px-5 text-gray-600 flex items-center justify-center">
+                            <NavLink to={`edit/${coupon.id}`}>
+                              <EditButton />
+                            </NavLink>
+                            <DeleteButton
+                              click={() => {
+                                toggleIsDelete();
+                                setId(coupon.id);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })
+                    : data.data
+                      .filter((coupon) => {
+                        if (search === "") {
+                          return coupon;
+                        } else if (
+                          coupon.name
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        ) {
+                          return coupon;
+                        }
+                      })
+                      .map((coupon, index) => {
                         return (
-                          <tr key={coupon.id}>
+                          <tr key={coupon.id} className="border border-gray-200">
                             <td className="py-2 px-5 text-gray-600">
                               {index + 1}
                             </td>
@@ -150,10 +218,10 @@ function Coupon() {
                             <td className="py-2 px-5 text-gray-600">
                               {coupon.offerPercent == null
                                 ? "-"
-                                : `${coupon.offerPercent} %`}
+                                : `Rs ${coupon.offerPercent}`}
                             </td>
 
-                            <td className="py-2 px-5 text-gray-600 flex items-center justify-center">
+                            <td className="py-2 flex items-center justify-center px-5 text-gray-600 ">
                               <NavLink to={`edit/${coupon.id}`}>
                                 <EditButton />
                               </NavLink>
@@ -166,75 +234,7 @@ function Coupon() {
                             </td>
                           </tr>
                         );
-                      })
-                    : data.data
-                        .filter((coupon) => {
-                          if (search === "") {
-                            return coupon;
-                          } else if (
-                            coupon.name
-                              .toLowerCase()
-                              .includes(search.toLowerCase())
-                          ) {
-                            return coupon;
-                          }
-                        })
-                        .map((coupon, index) => {
-                          return (
-                            <tr key={coupon.id}>
-                              <td className="py-2 px-5 text-gray-600">
-                                {index + 1}
-                              </td>
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.name}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.isAvailable == 1 ? "Yes" : "No"}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.minAmount}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.maxDisAmount}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.isAmount == 1 ? "Yes" : "No"}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.offerAmount == null
-                                  ? "-"
-                                  : `Rs ${coupon.offerAmount}`}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.isPercent == 1 ? "Yes" : "No"}
-                              </td>
-
-                              <td className="py-2 px-5 text-gray-600">
-                                {coupon.offerPercent == null
-                                  ? "-"
-                                  : `Rs ${coupon.offerPercent}`}
-                              </td>
-
-                              <td className="py-2 flex items-center justify-center px-5 text-gray-600 ">
-                                <NavLink to={`edit/${coupon.id}`}>
-                                  <EditButton />
-                                </NavLink>
-                                <DeleteButton
-                                  click={() => {
-                                    toggleIsDelete();
-                                    setId(coupon.id);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                          );
-                        })}
+                      })}
                 </tbody>
               </table>
             </div>

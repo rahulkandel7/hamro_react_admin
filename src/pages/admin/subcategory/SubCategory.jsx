@@ -141,7 +141,7 @@ function SubCategory() {
                         {search === ""
                           ? orderSubcategory.map((subCategory) => {
                             return (
-                              <tr key={subCategory.id}>
+                              <tr key={subCategory.id} className="border border-gray-200">
                                 <td className="py-2 px-5 text-gray-600">
                                   {subCategory.priority}
                                 </td>
@@ -181,7 +181,7 @@ function SubCategory() {
                             })
                             .map((dat) => {
                               return (
-                                <tr key={dat.id}>
+                                <tr key={dat.id} className="border border-gray-200">
                                   <td className="py-2 px-5 text-gray-600">
                                     {dat.priority}
                                   </td>
@@ -222,7 +222,7 @@ function SubCategory() {
                           {search === ""
                             ? products?.map((subCategory) => {
                               return (
-                                <tr key={subCategory.id}>
+                                <tr key={subCategory.id} className="border border-gray-200">
                                   <td className="py-2 px-5 text-gray-600">
                                     {subCategory.priority}
                                   </td>
@@ -262,7 +262,7 @@ function SubCategory() {
                               })
                               .map((dat) => {
                                 return (
-                                  <tr key={dat.id}>
+                                  <tr key={dat.id} className="border border-gray-200">
                                     <td className="py-2 px-5 text-gray-600">
                                       {dat.priority}
                                     </td>
