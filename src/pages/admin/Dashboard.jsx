@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useSWR from "swr";
 import AdminLayout from "../../components/admin/AdminLayout";
+import sound from '../../../public/ringtone.wav';
 
 function Dashboard() {
   const fetcher = (...args) =>
@@ -27,22 +28,22 @@ function Dashboard() {
   }, [change]);
 
   function playAudio() {
-    var audio = new Audio(
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
-    );
-    audio.play();
+    new Audio(
+      sound
+    ).play();
+
   }
 
   if (data) {
     return (
       <>
-        <AdminLayout>
+        <AdminLayout >
           <h1>THis is dashboard of admin pabel</h1>
 
           {data.data.length != localStorage.getItem("orderCount") ? (
             <div
               className="fixed top-0 bottom-0 right-0 left-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
-              onLoad={() => playAudio()}
+              onLoad={playAudio()}
             >
               <div className="bg-white rounded-md shadow-md w-64">
                 <div className=" p-10">
