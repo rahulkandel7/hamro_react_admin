@@ -78,34 +78,34 @@ function AddBanner() {
 
                   {/* For Product Status */}
                   <div className="mx-2">
-                        <label htmlFor="available" className="my-2 text-gray-500">
-                          Is Available <sup className="text-red-600">*</sup>
-                        </label>
-                        <input
-                          type="radio"
-                          name="available"
-                          id="available"
-                          value={1}
-                          onChange={handleChange}
-                          className="mx-2"
-                        />
-                        <span className="text-gray-500 ">Yes</span>
+                    <label htmlFor="available" className="my-2 text-gray-500">
+                      Is Available <sup className="text-red-600">*</sup>
+                    </label>
+                    <input
+                      type="radio"
+                      name="available"
+                      id="available"
+                      value={1}
+                      onChange={handleChange}
+                      className="mx-2"
+                    />
+                    <span className="text-gray-500 ">Yes</span>
 
-                        <input
-                          type="radio"
-                          name="available"
-                          id="available"
-                          value={0}
-                          onChange={handleChange}
-                          className="mx-2"
-                        />
-                        <span className="text-gray-500 ">No</span>
-                        <p className="text-sm text-red-500 pb-3">
-                          {errors.available}
-                        </p>
-                      </div>
+                    <input
+                      type="radio"
+                      name="available"
+                      id="available"
+                      value={0}
+                      onChange={handleChange}
+                      className="mx-2"
+                    />
+                    <span className="text-gray-500 ">No</span>
+                    <p className="text-sm text-red-500 pb-3">
+                      {errors.available}
+                    </p>
+                  </div>
 
-                      
+
 
                   <p className="my-2 text-gray-500 ">Select Photo</p>
                   <label htmlFor="photopath" className="my-2 text-gray-500 ">
@@ -139,7 +139,7 @@ function AddBanner() {
                     <div>
                       <button
                         className="px-8 py-1 bg-red-500 hover:bg-red-700 text-white rounded-md shadow-lg hover:shadow-xl mx-2"
-                        onClick={() => navigate("/admin/ad")}
+                        onClick={() => navigate("/admin/banner")}
                       >
                         Cancel
                       </button>

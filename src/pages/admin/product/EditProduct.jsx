@@ -54,7 +54,7 @@ function EditProduct() {
     brand_id: number().required("Please seelct brand for the products"),
     sku: number().required("SKU is required"),
     flashsale: number().required("Choose to show in falsh sale or not"),
-    status: number().required("Choose to product Status"),
+    available: number().required("Choose to product Status"),
     color: string().required("Color is required"),
     size: string().required("Size is required"),
   });
@@ -78,15 +78,12 @@ function EditProduct() {
                     discountedprice: productdata.data.discountedprice,
                     stock: productdata.data.stock,
                     description: productdata.data.description,
-                    // photopath1: productdata.data.photopath1,
-                    // photopath2: productdata.data.photopath2,
-                    // photopath3: productdata.data.photopath3,
                     category_id: productdata.data.category_id,
                     sub_category_id: productdata.data.sub_category_id,
                     brand_id: productdata.data.brand_id,
                     sku: productdata.data.sku,
                     flashsale: productdata.data.flashsale,
-                    status: productdata.data.status,
+                    available: productdata.data.available,
                     color: productdata.data.color,
                     size: productdata.data.size,
                   }}
@@ -98,30 +95,24 @@ function EditProduct() {
                     formData.append("discountedprice", values.discountedprice);
                     formData.append("stock", values.stock);
                     formData.append("description", values.description);
-                    formData.append(
+                    values.photopath1 !== undefined ? formData.append(
                       "photopath1",
-                      values.photopath1 !== null
-                        ? values.photopath1
-                        : productdata.data.photopath1
-                    );
-                    formData.append(
+                      values.photopath1
+                    ) : null;
+                    values.photopath2 !== undefined ? formData.append(
                       "photopath2",
-                      values.photopath2 !== null
-                        ? values.photopath2
-                        : productdata.data.photopath2
-                    );
-                    formData.append(
+                      values.photopath2
+                    ) : null;
+                    values.photopath3 !== undefined ? formData.append(
                       "photopath3",
-                      values.photopath3 !== null
-                        ? values.photopath3
-                        : productdata.data.photopath3
-                    );
+                      values.photopath3
+                    ) : null;
                     formData.append("category_id", values.category_id);
                     formData.append("sub_category_id", values.sub_category_id);
                     formData.append("brand_id", values.brand_id);
                     formData.append("sku", values.sku);
                     formData.append("flashsale", values.flashsale);
-                    formData.append("status", values.status);
+                    formData.append("available", values.available);
                     formData.append("color", values.color);
                     formData.append("size", values.size);
                     formData.append("_method", "put");
@@ -138,9 +129,8 @@ function EditProduct() {
                         },
                       }
                     );
-
                     res.json().then((data) => {
-                      if (data.status) {
+                      if (res.status) {
                         toast(data.message, {
                           type: "success",
                         });
@@ -415,19 +405,19 @@ function EditProduct() {
                           </p>
                         </div>
 
-                        {/* For Product Status */}
+                        {/* For Product available */}
                         <div className="mx-2">
                           <label
-                            htmlFor="status"
+                            htmlFor="available"
                             className="my-2 text-gray-500"
                           >
                             Is Available <sup className="text-red-600">*</sup>
                           </label>
                           <input
                             type="radio"
-                            name="status"
-                            id="status"
-                            checked={values.status == 1 ? true : false}
+                            name="available"
+                            id="available"
+                            checked={values.available == 1 ? true : false}
                             value={1}
                             onChange={handleChange}
                             className="mx-2"
@@ -436,16 +426,16 @@ function EditProduct() {
 
                           <input
                             type="radio"
-                            name="status"
-                            id="status"
-                            checked={values.status == 0 ? true : false}
+                            name="available"
+                            id="available"
+                            checked={values.available == 0 ? true : false}
                             value={0}
                             onChange={handleChange}
                             className="mx-2"
                           />
                           <span className="text-gray-500 ">No</span>
                           <p className="text-sm text-red-500 pb-3">
-                            {errors.status}
+                            {errors.available}
                           </p>
                         </div>
 
@@ -546,7 +536,11 @@ function EditProduct() {
                                     alt=""
                                   />
                                 ) : (
-                                  <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                  <img
+                                    src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath1}`}
+                                    className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1 object-cover"
+                                    alt=""
+                                  />
                                 )}
                               </div>
                             </label>
@@ -584,7 +578,11 @@ function EditProduct() {
                                     alt=""
                                   />
                                 ) : (
-                                  <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                  <img
+                                    src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath2}`}
+                                    className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1 object-cover"
+                                    alt=""
+                                  />
                                 )}
                               </div>
                             </label>
@@ -622,7 +620,11 @@ function EditProduct() {
                                     alt=""
                                   />
                                 ) : (
-                                  <i className="text-6xl text-gray-300 ri-add-line "></i>
+                                  <img
+                                    src={`https://api.hamroelectronics.com.np/public/${productdata.data.photopath3}`}
+                                    className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1 object-cover"
+                                    alt=""
+                                  />
                                 )}
                               </div>
                             </label>

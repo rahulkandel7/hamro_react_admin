@@ -222,7 +222,7 @@ function AddCoupon() {
                     <div>
                       <button
                         className="px-8 py-1 bg-red-500 hover:bg-red-700 text-white rounded-md shadow-lg hover:shadow-xl mx-2"
-                        onClick={() => navigate("/admin/shipping")}
+                        onClick={() => navigate("/admin/coupon")}
                       >
                         Cancel
                       </button>

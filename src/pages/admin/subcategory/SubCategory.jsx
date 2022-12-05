@@ -56,13 +56,14 @@ function SubCategory() {
         },
       }
     );
-    sub.json().then((data) => {
-      toast(data.message, {
+    sub.json().then((d) => {
+      toast(d.message, {
         type: "success",
       });
+      mutate(data);
+
     });
 
-    mutate();
     toggleIsDelete();
   }
 
@@ -93,7 +94,7 @@ function SubCategory() {
           <div className="px-10 py-6 w-full">
             <div className="flex justify-between">
               <h1 className="text-4xl text-gray-700">Sub Categories</h1>
-              <NavLink to={`create/${categoryId}`}>
+              <NavLink to="create">
                 <AddButton name="Add Sub Category" />
               </NavLink>
             </div>

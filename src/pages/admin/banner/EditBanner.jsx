@@ -55,12 +55,10 @@ function EditBanner() {
                   formData.append("priority", values.priority);
                   formData.append("available", values.available);
                   formData.append("_method", "put");
-                  formData.append(
+                  values.photopath !== undefined ? formData.append(
                     "photopath",
-                    values.photopath !== null
-                      ? values.photopath
-                      : data.data.photopath
-                  );
+                    values.photopath
+                  ) : null;
 
                   await fetch(
                     `https://api.hamroelectronics.com.np/api/v1/banner/${data.data.id}`,

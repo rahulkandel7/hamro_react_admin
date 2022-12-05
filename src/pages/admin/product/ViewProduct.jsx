@@ -33,7 +33,7 @@ function ViewProduct() {
 
   const navigate = useNavigate();
 
-  if (brandData) {
+  if (productdata && brandData && categoryData && subcategoryData) {
     return (
       <>
         <AdminLayout>

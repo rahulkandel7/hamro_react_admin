@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
@@ -77,7 +77,15 @@ function Product() {
   const navigate = useNavigate();
   //! Show Error
   if (error) {
-    return <ServerError />;
+    if (
+      !localStorage.getItem("token")
+    ) {
+      return <Navigate to="/" />
+
+    } else {
+
+      return <ServerError />;
+    }
   }
 
   //*Show Loading

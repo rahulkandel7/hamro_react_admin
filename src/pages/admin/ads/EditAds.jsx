@@ -55,12 +55,10 @@ function EditAds() {
                   formData.append("ad_code", values.ad_code);
                   formData.append("ad_description", values.ad_description);
                   formData.append("_method", "put");
-                  formData.append(
+                  values.photopath !== undefined ? formData.append(
                     "photopath",
-                    values.photopath !== null
-                      ? values.photopath
-                      : data.data.photopath
-                  );
+                    values.photopath
+                  ) : null;
 
                   const response = await fetch(
                     `https://api.hamroelectronics.com.np/api/v1/ad/${data.data.id}`,
@@ -87,7 +85,7 @@ function EditAds() {
                       toast(data.message, {
                         type: "success",
                       });
-                      navigate("/admin/banner");
+                      navigate("/admin/ad");
                     }
                   });
                 }}
@@ -173,7 +171,7 @@ function EditAds() {
                         <div>
                           <button
                             className="px-8 py-1 bg-red-500 hover:bg-red-700 text-white rounded-md shadow-lg hover:shadow-xl mx-2"
-                            onClick={() => navigate("/admin/banner")}
+                            onClick={() => navigate("/admin/ad")}
                           >
                             Cancel
                           </button>
@@ -181,7 +179,7 @@ function EditAds() {
                             type="submit"
                             className="px-8 py-1 bg-emerald-500 hover:bg-emerald-700 text-white rounded-md shadow-lg hover:shadow-xl mx-2"
                           >
-                            Update Banner
+                            Update Ads
                           </button>
                         </div>
                       </div>

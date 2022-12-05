@@ -55,12 +55,12 @@ function EditCategory() {
                   formData.append("category_name", values.category_name);
                   formData.append("priority", values.priority);
                   formData.append("_method", "put");
-                  formData.append(
+                  values.photopath !== undefined ? formData.append(
                     "photopath",
-                    values.photopath !== null
-                      ? values.photopath
-                      : data.data.photopath
-                  );
+                    values.photopath
+                  ) : null;
+                  console.log(values.photopath);
+                  console.log(data.data.photopath);
 
                   const response = await fetch(
                     `https://api.hamroelectronics.com.np/api/v1/category/${data.data.id}`,
@@ -147,7 +147,11 @@ function EditCategory() {
                               alt=""
                             />
                           ) : (
-                            <i className="text-6xl text-gray-300 ri-add-line "></i>
+                            <img
+                              src={`https://api.hamroelectronics.com.np/public/${data.data.photopath}`}
+                              className="w-full h-full border border-gray-200 rounded-lg shadow-lg p-1 object-cover"
+                              alt=""
+                            />
                           )}
                         </div>
                       </label>
