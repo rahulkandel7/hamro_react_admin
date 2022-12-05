@@ -62,7 +62,7 @@ function EditBanner() {
                       : data.data.photopath
                   );
 
-                  const response = await fetch(
+                  await fetch(
                     `https://api.hamroelectronics.com.np/api/v1/banner/${data.data.id}`,
                     {
                       method: "POST",
@@ -73,22 +73,22 @@ function EditBanner() {
                         )}`,
                       },
                     }
-                  );
-
-                  response.json().then((data) => {
-                    if (data.details) {
-                      data.details.photopath.map((detail) => {
-                        toast(detail, {
-                          type: "error",
+                  ).then((res) => {
+                    res.json().then((data) => {
+                      if (data.details) {
+                        data.details.photopath.map((detail) => {
+                          toast(detail, {
+                            type: "error",
+                          });
                         });
-                      });
-                    }
-                    if (data.status) {
-                      toast(data.message, {
-                        type: "success",
-                      });
-                      navigate("/admin/banner");
-                    }
+                      }
+                      if (data.status) {
+                        toast(data.message, {
+                          type: "success",
+                        });
+                        navigate("/admin/banner");
+                      }
+                    });
                   });
                 }}
               >
@@ -117,7 +117,7 @@ function EditBanner() {
                       </p>
 
                       {/* For Product Status */}
-                  <div className="mx-2">
+                      <div className="mx-2">
                         <label htmlFor="available" className="my-2 text-gray-500">
                           Is Available <sup className="text-red-600">*</sup>
                         </label>
@@ -147,7 +147,7 @@ function EditBanner() {
                         </p>
                       </div>
 
-                      
+
 
                       <p className="my-2 text-gray-500 ">Select Photo</p>
                       <label
