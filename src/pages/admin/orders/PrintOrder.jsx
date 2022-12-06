@@ -67,7 +67,7 @@ function PrintOrder() {
     });
     let date = new Date(order[0].created_at);
 
-    let total = cartOrder.data.reduce((acc, item) => acc + item.totalprice, 0);
+    let total = cartOrder.data.reduce((acc, item) => item.status != "cancelled" ? acc + item.totalprice : acc, 0);
 
     let totalPrice =
       parseInt(total) +
@@ -197,23 +197,25 @@ function PrintOrder() {
 
                         {cartOrder.data.map((cart, index) => {
                           return (
-                            <tr className="border-t-2 border-dashed border-gray-600 font-normal">
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {index + 1}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.productname}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.rate}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.quantity}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.totalprice}
-                              </td>
-                            </tr>
+                            cart.status != "cancelled" ?
+                              <tr className="border-t-2 border-dashed border-gray-600 font-normal">
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {index + 1}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.productname}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.rate}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.quantity}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.totalprice}
+                                </td>
+                              </tr> : null
+
                           );
                         })}
                         <tr className="border-t-2 border-dashed border-gray-600">
@@ -226,7 +228,7 @@ function PrintOrder() {
                           <td className="px-2 font-semibold print:px-12 text-xl print:text-3xl text-left py-2 print:py-6 border-t-2 border-dashed border-gray-600">
                             Rs.{" "}
                             {cartOrder.data.reduce(
-                              (acc, item) => acc + item.totalprice,
+                              (acc, item) => item.status != "cancelled" ? acc + item.totalprice : acc,
                               0
                             )}
                           </td>
@@ -283,7 +285,7 @@ function PrintOrder() {
                 </div>
 
                 <div className="border-4 print:w-[2450px] print:h-[1748px] relative">
-                  <div className="print:mt-2 mt-2 print:pt-4">
+                  <div className="print:mt-2 mt-2">
                     <p className="text-5xl print:text-8xl mb-0 pb-0 print:pb-2">
                       Hamro Electronics
                     </p>
@@ -320,6 +322,7 @@ function PrintOrder() {
                         size={256}
                         style={{
                           height: "auto",
+
                           width: "15%",
                         }}
                         value={`100${order[0].id}`}
@@ -367,23 +370,25 @@ function PrintOrder() {
 
                         {cartOrder.data.map((cart, index) => {
                           return (
-                            <tr className="border-t-2 border-dashed border-gray-600 font-normal">
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {index + 1}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.productname}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.rate}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.quantity}
-                              </td>
-                              <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
-                                {cart.totalprice}
-                              </td>
-                            </tr>
+                            cart.status != "cancelled" ?
+                              <tr className="border-t-2 border-dashed border-gray-600 font-normal">
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {index + 1}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.productname}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.rate}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.quantity}
+                                </td>
+                                <td className="px-2 print:px-12 text-xl print:text-3xl text-left py-2 print:py-6">
+                                  {cart.totalprice}
+                                </td>
+                              </tr> : null
+
                           );
                         })}
                         <tr className="border-t-2 border-dashed border-gray-600">
@@ -396,7 +401,7 @@ function PrintOrder() {
                           <td className="px-2 font-semibold print:px-12 text-xl print:text-3xl text-left py-2 print:py-6 border-t-2 border-dashed border-gray-600">
                             Rs.{" "}
                             {cartOrder.data.reduce(
-                              (acc, item) => acc + item.totalprice,
+                              (acc, item) => item.status != "cancelled" ? acc + item.totalprice : acc,
                               0
                             )}
                           </td>
