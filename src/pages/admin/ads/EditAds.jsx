@@ -1,4 +1,4 @@
-import { mixed, number, object, string } from "yup";
+import { mixed, object, string } from "yup";
 import { Formik } from "formik";
 
 import { NavLink, useNavigate, useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import { toast } from "react-toastify";
 import ServerError from "../../500";
-import Spinner from "../../../components/utils/Spinner";
+
 
 function EditAds() {
   const addSchema = object({
@@ -32,7 +32,7 @@ function EditAds() {
   }
 
   if (!error && !data) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
   if (data) {
     return (

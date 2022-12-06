@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../utils/Spinner";
 import Sidebar from "./Sidebar";
 
 function AdminLayout(props) {
@@ -23,16 +24,26 @@ function AdminLayout(props) {
     }
   }, []);
 
+
   return (
     <>
+
       <div className="flex w-full">
         <Sidebar />
-        <div className="w-full flex-grow-0 overflow-hidden min-h-screen max-h-fit">
-          {props.children}
-        </div>
+        {
+          props.loading ?
+            <Spinner />
+            : <div className="w-full">
+              <div className="w-full flex-grow-0 overflow-hidden min-h-screen max-h-fit">
+                {props.children}
+              </div>
+            </div>
+        }
+
       </div>
     </>
   );
 }
+
 
 export default AdminLayout;

@@ -72,7 +72,7 @@ function SubCategory() {
   }
 
   if (!data && !error) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
 
   if (data) {

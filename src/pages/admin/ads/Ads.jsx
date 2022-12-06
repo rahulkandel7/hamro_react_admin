@@ -5,11 +5,11 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
-import Spinner from "../../../components/utils/Spinner";
 
 import DeleteButton from "../../../components/utils/buttons/DeleteButton";
 import EditButton from "../../../components/utils/buttons/EditButton";
 import ServerError from "../../500";
+import Spinner from '../../../components/utils/Spinner'
 
 function Ads() {
   //* For Fetching Data
@@ -64,7 +64,7 @@ function Ads() {
 
   //*Show Loading
   if (!data && !error) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
 
   //? Show Data when loaded

@@ -100,7 +100,7 @@ function Order() {
 
   if (error) return <ServerError />;
 
-  if (!data && !error) return <Spinner />;
+  if (!data && !error) return <AdminLayout loading={true} />;
 
   if (data) {
     return (
@@ -185,7 +185,7 @@ function Order() {
                 <tbody>
                   {loading ? (
                     <tr>
-                      <Spinner />
+                      <AdminLayout />
                     </tr>
                   ) : (
                     data.data.map((order, index) => {

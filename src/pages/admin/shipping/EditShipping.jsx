@@ -33,7 +33,7 @@ function EditShipping() {
   }
 
   if (!error && !data) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
 
   if (data) {

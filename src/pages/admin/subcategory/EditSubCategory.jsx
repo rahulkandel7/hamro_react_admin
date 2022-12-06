@@ -41,7 +41,7 @@ function EditSubCategory() {
   }
 
   if (!subCategoryError && !subCategoryData) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
 
   if (subCategoryData) {
@@ -156,7 +156,7 @@ function EditSubCategory() {
                                 key={category.id}
                                 selected={
                                   category.id ==
-                                  subCategoryData.data.category_id
+                                    subCategoryData.data.category_id
                                     ? true
                                     : false
                                 }

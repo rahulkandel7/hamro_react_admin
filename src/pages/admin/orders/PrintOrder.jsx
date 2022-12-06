@@ -59,7 +59,7 @@ function PrintOrder() {
 
   if (cartOrderError) return <ServerError />;
 
-  if (!cartOrder) return <Spinner />;
+  if (!cartOrder) return <AdminLayout loading={true} />;
 
   if (cartOrder && data) {
     let order = data.data.filter((order) => {

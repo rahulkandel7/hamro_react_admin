@@ -66,7 +66,7 @@ function Category() {
 
   //*Show Loading
   if (!data && !error) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
 
   //? Show Data when loaded

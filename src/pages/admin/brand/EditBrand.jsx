@@ -30,7 +30,7 @@ function EditBrand() {
   }
 
   if (!error && !data) {
-    return <Spinner />;
+    return <AdminLayout loading={true} />;
   }
   if (data) {
     return (

@@ -24,33 +24,33 @@ function ViewOrder() {
     fetcher
   );
 
-  function updateStatus(id,status){
-    fetch(`https://api.hamroelectronics.com.np/api/v1/order/cart/update/${id}/${status}`,{
-      headers:{
+  function updateStatus(id, status) {
+    fetch(`https://api.hamroelectronics.com.np/api/v1/order/cart/update/${id}/${status}`, {
+      headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       }
-    }).then(res=>res.json()).then(data=>{
-      toast(data.message,{
+    }).then(res => res.json()).then(data => {
+      toast(data.message, {
         type: 'success',
-        });
+      });
       mutate(data);
     });
-    }
+  }
 
-    const [isPressed,setIsPressed] = useState(false);
-    const [name,setName] = useState('');
-    const [cartId,setCartId] = useState();
+  const [isPressed, setIsPressed] = useState(false);
+  const [name, setName] = useState('');
+  const [cartId, setCartId] = useState();
 
   if (error) return <ServerError />;
 
-  if (!data) return <Spinner />;
+  if (!data) return <AdminLayout loading={true} />;
 
   if (data) {
 
     return (
       <>
         <AdminLayout>
-        {isPressed ? (
+          {isPressed ? (
             <Conformation
               hide={() => setIsPressed(false)}
               name={name}
@@ -113,10 +113,10 @@ function ViewOrder() {
                             className="py-2 px-5 bg-amber-600 hover:bg-amber-700 text-white rounded-md mr-2 "
                             title="Pending"
                             onClick={() => {
-                                    setCartId(cart.id);
-                                    setName("pending");
-                                    setIsPressed(true);
-                                  }}
+                              setCartId(cart.id);
+                              setName("pending");
+                              setIsPressed(true);
+                            }}
                           >
                             <MdOutlinePendingActions />
                           </button>
@@ -133,7 +133,7 @@ function ViewOrder() {
                             <BsCheck2Circle />
                           </button>
 
-                          <button className="py-2 px-5 bg-red-600 hover:bg-red-700 text-white rounded-md mr-2 " title="cancelled" 
+                          <button className="py-2 px-5 bg-red-600 hover:bg-red-700 text-white rounded-md mr-2 " title="cancelled"
                             onClick={() => {
                               setCartId(cart.id);
                               setName("cancelled");

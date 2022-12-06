@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { RiNotification2Fill, RiNotification2Line } from "react-icons/ri";
 import useSWR from "swr";
 import AdminLayout from "../../components/admin/AdminLayout";
-import sound from '../../../public/ringtone.wav';
+import sound from '../../ringtone.wav';
 
 function Dashboard() {
   const fetcher = (...args) =>
@@ -45,22 +46,25 @@ function Dashboard() {
               className="fixed top-0 bottom-0 right-0 left-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
               onLoad={playAudio()}
             >
-              <div className="bg-white rounded-md shadow-md w-64">
-                <div className=" p-10">
-                  <h1 className="text-xl font-semibold">New Orders Detect</h1>
+              <div className="bg-white rounded-md shadow-md w-80">
+                <div className="p-10">
+                  <div className="flex justify-center">
+                    <RiNotification2Fill size={32} className="text-yellow-400" />
+
+                  </div>
+                  <h1 className="text-xl font-semibold text-center mt-2">New Orders Detect</h1>
                   <div className="flex justify-center items-center">
                     <button
                       onClick={() => setChange(!change)}
                       className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 my-3 py-1 rounded-md"
                     >
-                      Refresh
+                      Confirm
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           ) : null}
-          <button onClick={() => setChange(!change)}>Change</button>
         </AdminLayout>
       </>
     );
