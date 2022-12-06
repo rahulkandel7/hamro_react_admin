@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { RiNotification2Fill, RiNotification2Line } from "react-icons/ri";
+import { RiNotification2Fill } from "react-icons/ri";
+import { Navigate } from "react-router-dom";
 import useSWR from "swr";
 import AdminLayout from "../../components/admin/AdminLayout";
 import sound from '../../ringtone.wav';
+import ServerError from "../500";
 
 function Dashboard() {
   const fetcher = (...args) =>
@@ -33,6 +35,15 @@ function Dashboard() {
       sound
     ).play();
 
+  }
+
+  if (error) {
+    if (!localStorage.getItem("token")) {
+      return <Navigate to="/" />;
+    }
+    else {
+      return <ServerError />;
+    }
   }
 
   if (data) {
