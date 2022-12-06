@@ -33,10 +33,9 @@ function AdminLayout(props) {
         {
           props.loading ?
             <Spinner />
-            : <div className="w-full">
-              <div className="w-full flex-grow-0 overflow-hidden min-h-screen max-h-fit">
-                {props.children}
-              </div>
+            :
+            <div className="w-full flex-grow-0 min-h-screen max-h-fit overflow-x-hidden">
+              {props.children}
             </div>
         }
 

@@ -164,7 +164,7 @@ function Order() {
                 Cancelled
               </button>
             </div>
-            <div className="overflow-auto">
+            <div className="overflow-x-auto ">
               <table className="w-full border border-gray-200 rounded-md shadow-md px-5">
                 <thead className="bg-gray-500 ">
                   <tr className="w-full border border-gray-100 text-white">
@@ -185,18 +185,17 @@ function Order() {
                 <tbody>
                   {loading ? (
                     <tr>
-                      <AdminLayout />
+                      <Spinner />
                     </tr>
                   ) : (
                     data.data.map((order, index) => {
-                      let d = new Date(order.created_at);
 
                       return (
-                        <tr className="border border-gray-200">
+                        <tr className="border border-gray-200" key={order.id}>
                           <td className="py-2 px-5 ">{index + 1}</td>
                           <td className="py-2 px-5 ">{order.fullname}</td>
                           <td className="py-2 px-5 ">
-                            {`${d.getFullYear()}/${d.getMonth()}/${d.getDay()} ${d.getHours()}:${d.getMinutes()}`}
+                            {new Date(order.created_at).toLocaleDateString()}
                           </td>
                           <td className="py-2 px-5 ">{order.phone}</td>
                           <td className="py-2 px-5 ">

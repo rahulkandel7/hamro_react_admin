@@ -67,15 +67,15 @@ function SubCategory() {
     toggleIsDelete();
   }
 
-  if (error) {
+  if (error && categoryError) {
     return <ServerError />;
   }
 
-  if (!data && !error) {
+  if (!data && !error && !categoryData && !categoryError) {
     return <AdminLayout loading={true} />;
   }
 
-  if (data) {
+  if (data && categoryData) {
     const orderSubcategory = [...data.data].sort(
       (a, b) => a.priority - b.priority
     );

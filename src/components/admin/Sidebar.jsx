@@ -12,7 +12,7 @@ import { RiEBike2Line } from "react-icons/ri";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { RiMenu2Fill } from "react-icons/ri";
-import {HiOutlineTrash} from 'react-icons/hi';
+import { HiOutlineTrash } from 'react-icons/hi';
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -91,14 +91,12 @@ function Sidebar() {
   return (
     <>
       <div
-        className={`${
-          sidebar ? "w-24" : "w-64"
-        } flex-shrink-0 shadow-md min-h-screen max-h-fit bg-gray-50 relative`}
+        className={`${sidebar ? "w-24" : "w-64"
+          } flex-shrink-0 shadow-md min-h-screen max-h-fit bg-gray-50 relative`}
       >
         <button
-          className={`absolute top-[3%]  p-2 rounded-full bg-white shadow-md hover:shadow cursor-pointer ${
-            sidebar ? "-right-[20%]" : "-right-[7%]"
-          }`}
+          className={`absolute top-[3%]  p-2 rounded-full bg-white shadow-md hover:shadow cursor-pointer ${sidebar ? "-right-[20%]" : "-right-[7%]"
+            }`}
           onClick={() => {
             if (sessionStorage.getItem("sidebar")) {
               sessionStorage.clear();
