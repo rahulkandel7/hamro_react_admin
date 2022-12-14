@@ -22,6 +22,7 @@ function AddAds() {
           <Formik
             initialValues={{ ad_code: "", ad_description: "", photopath: "" }}
             validateOnChange={false}
+            v
             validationSchema={addSchema}
             onSubmit={async (values) => {
               const formData = new FormData();

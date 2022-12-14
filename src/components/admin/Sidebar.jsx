@@ -1,18 +1,13 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { GoDashboard } from "react-icons/go";
-import { GiVerticalBanner } from "react-icons/gi";
-import { RiAdvertisementLine } from "react-icons/ri";
+import { useState } from "react";
 import { BiCategoryAlt } from "react-icons/bi";
-import { MdOutlineCategory } from "react-icons/md";
-import { SiBrandfolder } from "react-icons/si";
-import { RiProductHuntLine } from "react-icons/ri";
-import { MdOutlineLocalShipping } from "react-icons/md";
-import { RiCoupon2Line } from "react-icons/ri";
-import { RiEBike2Line } from "react-icons/ri";
-import { IoLogOutOutline } from "react-icons/io5";
-import { useEffect, useState } from "react";
-import { RiMenu2Fill } from "react-icons/ri";
+import { GiVerticalBanner } from "react-icons/gi";
+import { GoDashboard } from "react-icons/go";
 import { HiOutlineTrash } from 'react-icons/hi';
+import { IoLogOutOutline } from "react-icons/io5";
+import { MdOutlineCategory, MdOutlineLocalShipping } from "react-icons/md";
+import { RiAdvertisementLine, RiCoupon2Line, RiEBike2Line, RiMenu2Fill, RiNotification2Line, RiProductHuntLine } from "react-icons/ri";
+import { SiBrandfolder } from "react-icons/si";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -43,6 +38,11 @@ function Sidebar() {
       name: "Ads",
       icon: <RiAdvertisementLine className="mr-2" title="Ads" />,
       link: "/admin/ad",
+    },
+    {
+      name: "Notification",
+      icon: <RiNotification2Line className="mr-2" title="Notification" />,
+      link: "/admin/notification",
     },
     {
       name: "Category",

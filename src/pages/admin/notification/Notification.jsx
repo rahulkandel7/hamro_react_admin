@@ -10,14 +10,14 @@ import EditButton from "../../../components/utils/buttons/EditButton";
 import SearchBox from "../../../components/utils/SearchBox";
 import ServerError from "../../500";
 
-function Coupon() {
+function Notification() {
   const fetcher = (...args) =>
     fetch(...args, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     }).then((res) => res.json());
 
   const { data, mutate, error } = useSWR(
-    "https://api.hamroelectronics.com.np/api/v1/coupon",
+    "https://api.hamroelectronics.com.np/api/v1/notification",
     fetcher
   );
   const [search, setSearch] = useState("");
@@ -36,9 +36,9 @@ function Coupon() {
 
   //* For Deleteing Category
 
-  async function deleteCoupon(id) {
+  async function deleteNotification(id) {
     const category = await fetch(
-      `https://api.hamroelectronics.com.np/api/v1/coupon/${id}`,
+      `https://api.hamroelectronics.com.np/api/v1/notification/${id}`,
       {
         method: "delete",
         headers: {
@@ -70,7 +70,7 @@ function Coupon() {
         <AdminLayout>
           {isDelete ? (
             <ShowDelete
-              delete={deleteCoupon}
+              delete={deleteNotification}
               hideDelete={toggleIsDelete}
               id={id}
             />
@@ -79,14 +79,14 @@ function Coupon() {
           )}
           <div className="px-10 py-6 w-full">
             <div className="flex justify-between">
-              <h1 className="text-4xl text-gray-700">Coupon</h1>
+              <h1 className="text-4xl text-gray-700">Notifications</h1>
               <NavLink to="create">
-                <AddButton name="Add Coupon" />
+                <AddButton name="Add Notification" />
               </NavLink>
             </div>
             <hr className="my-2" />
             <SearchBox
-              name="Coupon"
+              name="Notification"
               change={(e) => {
                 setSearch(e.target.value);
               }}
@@ -97,69 +97,41 @@ function Coupon() {
                 <thead className="bg-gray-500 ">
                   <tr className="w-full border border-gray-100 text-white">
                     <td className="py-2 px-5 ">S.No</td>
-                    <td className="py-2 px-5 ">Coupon Name</td>
-                    <td className="py-2 px-5 ">Is Available</td>
-                    <td className="py-2 px-5 ">Min. Amount</td>
-                    <td className="py-2 px-5 ">Max. Dis. Amount</td>
-                    <td className="py-2 px-5 ">Is Amount</td>
-                    <td className="py-2 px-5 ">Offer Amount</td>
-                    <td className="py-2 px-5 ">Is Percent</td>
-                    <td className="py-2 px-5 ">Percentage</td>
+                    <td className="py-2 px-5 ">Title</td>
+                    <td className="py-2 px-5 ">Description</td>
+                    <td className="py-2 px-5 ">Date</td>
                     <td className="py-2 px-5 ">Action</td>
                   </tr>
                 </thead>
                 <tbody>
                   {search === ""
-                    ? data.data.map((coupon, index) => {
+                    ? data.data.map((notification, index) => {
                       return (
-                        <tr key={coupon.id} className="border border-gray-200">
+                        <tr key={notification.id} className="border border-gray-200">
                           <td className="py-2 px-5 text-gray-600">
                             {index + 1}
                           </td>
                           <td className="py-2 px-5 text-gray-600">
-                            {coupon.name}
+                            {notification.title}
                           </td>
 
                           <td className="py-2 px-5 text-gray-600">
-                            {coupon.isAvailable == 1 ? "Yes" : "No"}
+                            {notification.description}
                           </td>
 
                           <td className="py-2 px-5 text-gray-600">
-                            {coupon.minAmount}
+                            {notification.created_at}
                           </td>
 
-                          <td className="py-2 px-5 text-gray-600">
-                            {coupon.maxDisAmount}
-                          </td>
-
-                          <td className="py-2 px-5 text-gray-600">
-                            {coupon.isAmount == 1 ? "Yes" : "No"}
-                          </td>
-
-                          <td className="py-2 px-5 text-gray-600">
-                            {coupon.offerAmount == null
-                              ? "-"
-                              : `Rs ${coupon.offerAmount}`}
-                          </td>
-
-                          <td className="py-2 px-5 text-gray-600">
-                            {coupon.isPercent == 1 ? "Yes" : "No"}
-                          </td>
-
-                          <td className="py-2 px-5 text-gray-600">
-                            {coupon.offerPercent == null
-                              ? "-"
-                              : `${coupon.offerPercent} %`}
-                          </td>
 
                           <td className="py-2 px-5 text-gray-600 flex items-center justify-center">
-                            <NavLink to={`edit/${coupon.id}`}>
+                            <NavLink to={`edit/${notification.id}`}>
                               <EditButton />
                             </NavLink>
                             <DeleteButton
                               click={() => {
                                 toggleIsDelete();
-                                setId(coupon.id);
+                                setId(notification.id);
                               }}
                             />
                           </td>
@@ -167,67 +139,43 @@ function Coupon() {
                       );
                     })
                     : data.data
-                      .filter((coupon) => {
+                      .filter((notification) => {
                         if (search === "") {
-                          return coupon;
+                          return notification;
                         } else if (
-                          coupon.name
+                          notification.title
                             .toLowerCase()
                             .includes(search.toLowerCase())
                         ) {
-                          return coupon;
+                          return notification;
                         }
                       })
-                      .map((coupon, index) => {
+                      .map((notification, index) => {
                         return (
-                          <tr key={coupon.id} className="border border-gray-200">
+                          <tr key={notification.id} className="border border-gray-200">
                             <td className="py-2 px-5 text-gray-600">
                               {index + 1}
                             </td>
                             <td className="py-2 px-5 text-gray-600">
-                              {coupon.name}
+                              {notification.title}
                             </td>
 
                             <td className="py-2 px-5 text-gray-600">
-                              {coupon.isAvailable == 1 ? "Yes" : "No"}
+                              {notification.description}
                             </td>
 
                             <td className="py-2 px-5 text-gray-600">
-                              {coupon.minAmount}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
-                              {coupon.maxDisAmount}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
-                              {coupon.isAmount == 1 ? "Yes" : "No"}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
-                              {coupon.offerAmount == null
-                                ? "-"
-                                : `Rs ${coupon.offerAmount}`}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
-                              {coupon.isPercent == 1 ? "Yes" : "No"}
-                            </td>
-
-                            <td className="py-2 px-5 text-gray-600">
-                              {coupon.offerPercent == null
-                                ? "-"
-                                : `Rs ${coupon.offerPercent}`}
+                              {notification.created_at}
                             </td>
 
                             <td className="py-2 flex items-center justify-center px-5 text-gray-600 ">
-                              <NavLink to={`edit/${coupon.id}`}>
+                              <NavLink to={`edit/${notification.id}`}>
                                 <EditButton />
                               </NavLink>
                               <DeleteButton
                                 click={() => {
                                   toggleIsDelete();
-                                  setId(coupon.id);
+                                  setId(notification.id);
                                 }}
                               />
                             </td>
@@ -244,4 +192,4 @@ function Coupon() {
   }
 }
 
-export default Coupon;
+export default Notification;

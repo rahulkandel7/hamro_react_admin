@@ -1,47 +1,50 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./index.css";
 
 //* For toaster
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //* Admin Pages
-import Dashboard from "./pages/admin/Dashboard";
-import AdminCategory from "./pages/admin/category/Category";
-import AddCategory from "./pages/admin/category/AddCategory";
-import EditCategory from "./pages/admin/category/EditCategory";
-import SubCategory from "./pages/admin/subcategory/SubCategory";
-import AddSubCategory from "./pages/admin/subcategory/AddSubCategory";
-import EditSubCategory from "./pages/admin/subcategory/EditSubCategory";
-import Brand from "./pages/admin/brand/Brand";
+import PageNotFound from "./pages/404";
 import AddBrand from "./pages/admin/brand/AddBrand";
+import Brand from "./pages/admin/brand/Brand";
 import EditBrand from "./pages/admin/brand/EditBrand";
-import Products from "./pages/admin/product/Products";
+import AddCategory from "./pages/admin/category/AddCategory";
+import AdminCategory from "./pages/admin/category/Category";
+import EditCategory from "./pages/admin/category/EditCategory";
+import Dashboard from "./pages/admin/Dashboard";
 import AddProduct from "./pages/admin/product/AddProduct";
 import EditProduct from "./pages/admin/product/EditProduct";
+import Products from "./pages/admin/product/Products";
 import ViewProduct from "./pages/admin/product/ViewProduct";
-import PageNotFound from "./pages/404";
-import Shipping from "./pages/admin/shipping/Shipping";
 import AddShipping from "./pages/admin/shipping/AddShipping";
 import EditShipping from "./pages/admin/shipping/EditShipping";
+import Shipping from "./pages/admin/shipping/Shipping";
+import AddSubCategory from "./pages/admin/subcategory/AddSubCategory";
+import EditSubCategory from "./pages/admin/subcategory/EditSubCategory";
+import SubCategory from "./pages/admin/subcategory/SubCategory";
 
-import Banner from "./pages/admin/banner/Banner";
 import AddBanner from "./pages/admin/banner/AddBanner";
+import Banner from "./pages/admin/banner/Banner";
 import EditBanner from "./pages/admin/banner/EditBanner";
-import Coupon from "./pages/admin/coupon/Coupon";
 import AddCoupon from "./pages/admin/coupon/AddCoupon";
+import Coupon from "./pages/admin/coupon/Coupon";
 import EditCoupon from "./pages/admin/coupon/EditCoupon";
 
-import ScrollToTop from "./components/utils/ScrollToTop";
 import App from "./App";
-import Ads from "./pages/admin/ads/Ads";
+import ScrollToTop from "./components/utils/ScrollToTop";
 import AddAds from "./pages/admin/ads/AddAds";
+import Ads from "./pages/admin/ads/Ads";
 import EditAds from "./pages/admin/ads/EditAds";
+import AddNotification from "./pages/admin/notification/AddNotification";
+import EditNotification from "./pages/admin/notification/EditNotification";
+import Notification from "./pages/admin/notification/Notification";
 import Order from "./pages/admin/orders/Order";
-import ViewOrder from "./pages/admin/orders/viewOrder";
 import PrintOrder from "./pages/admin/orders/PrintOrder";
+import ViewOrder from "./pages/admin/orders/viewOrder";
 import Trash from "./pages/admin/trash/Trash";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -99,6 +102,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route index element={<Coupon />} />
               <Route path="create" element={<AddCoupon />} />
               <Route path="edit/:id" element={<EditCoupon />} />
+            </Route>
+
+            {/* Notification Route */}
+            <Route path="notification">
+              <Route index element={<Notification />} />
+              <Route path="create" element={<AddNotification />} />
+              <Route path="edit/:id" element={<EditNotification />} />
             </Route>
 
             {/* Ads Route */}
