@@ -45,7 +45,7 @@ function AddNotification() {
                     toast(data.message, {
                       type: "success",
                     });
-                    navigate("/admin/coupon");
+                    navigate("/admin/notification");
                   }
                 });
               });

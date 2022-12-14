@@ -10,7 +10,7 @@ import ServerError from "../../500";
 
 import { AiOutlineEye } from "react-icons/ai";
 import { CiTrash } from "react-icons/ci";
-import { FiEdit } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiEdit } from "react-icons/fi";
 
 function Product() {
   //* For Fetching Data
@@ -18,10 +18,12 @@ function Product() {
     fetch(...args, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     }).then((res) => res.json());
+  const [page, setPage] = useState(1);
   const { data, mutate, error } = useSWR(
-    "https://api.hamroelectronics.com.np/api/v1/product",
+    "https://api.hamroelectronics.com.np/api/v1/product?page=" + page,
     fetcher
   );
+
 
 
 
@@ -35,7 +37,7 @@ function Product() {
   const [categoryId, setCategoryId] = useState(0);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    setProducts(data?.data?.filter((product) => product.category_id == categoryId));
+    setProducts(data?.data?.data?.filter((product) => product.category_id == categoryId));
   }, [categoryId]);
 
 
@@ -96,7 +98,7 @@ function Product() {
 
   //? Show Data when loaded
   if (data && categoryData) {
-    console.log(data);
+    const lastPage = data.data.last_page;
     return (
       <>
         <AdminLayout>
@@ -160,7 +162,7 @@ function Product() {
                     </thead>
                     <tbody>
                       {search === ""
-                        ? data.data.map((product) => {
+                        ? data.data.data.map((product) => {
                           return (
                             <tr key={product.id} className="border border-gray-200">
                               <td className="py-2 px-5 text-gray-600">
@@ -227,7 +229,7 @@ function Product() {
                             </tr>
                           );
                         })
-                        : data.data
+                        : data.data.data
                           .filter((product) => {
                             if (search === "") {
                               return product;
@@ -474,6 +476,38 @@ function Product() {
                 </div>
             }
             <div></div>
+          </div>
+          <div className="flex justify-center items-center my-5">
+            {/* /Paginate Button */}
+            <div className="flex items-center">
+              <button
+                className="px-6 py-2 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2"
+                onClick={() => {
+                  if (page <= 1) {
+                    setPage(1);
+                  } else {
+                    setPage(page - 1);
+                  }
+                }}
+              >
+                <FiChevronLeft />
+              </button>
+              <p className="text-gray-600">
+                {page} / {lastPage}
+              </p>
+              <button
+                className="px-6 py-2 rounded-md shadow-lg hover:shadow-xl bg-blue-500 hover:bg-blue-700 text-white mx-2"
+                onClick={() => {
+
+                  if (page <= lastPage) {
+                    setPage(page + 1);
+                  }
+                }}
+              >
+                <FiChevronRight />
+              </button>
+            </div>
+
           </div>
         </AdminLayout>
       </>
