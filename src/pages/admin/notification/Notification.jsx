@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FiSend } from "react-icons/fi";
+import { RiRecycleLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSWR from "swr";
@@ -54,6 +56,21 @@ function Notification() {
     });
     mutate();
     toggleIsDelete();
+  }
+
+  function resend(id) {
+    fetch(`https://api.hamroelectronics.com.np/api/v1/notification/resend/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast(data.message, {
+          type: "success",
+        });
+      });
   }
 
   if (error) {
@@ -125,6 +142,9 @@ function Notification() {
 
 
                           <td className="py-2 px-5 text-gray-600 flex items-center justify-center">
+                            <button className="px-4 py-2 bg-emerald-600 hover:bg-emerald-800 text-white rounded-md shadow-md" onClick={() => resend(notification.id)}>
+                              <FiSend />
+                            </button>
                             <NavLink to={`edit/${notification.id}`}>
                               <EditButton />
                             </NavLink>
@@ -169,6 +189,9 @@ function Notification() {
                             </td>
 
                             <td className="py-2 flex items-center justify-center px-5 text-gray-600 ">
+                              <button className="px-4 py-2 bg-emerald-600 hover:bg-emerald-800 text-white rounded-md shadow-md" onClick={() => resend(notification.id)}>
+                                <FiSend />
+                              </button>
                               <NavLink to={`edit/${notification.id}`}>
                                 <EditButton />
                               </NavLink>
