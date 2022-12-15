@@ -41,7 +41,7 @@ function AddNotification() {
                 },
               }).then((res) => {
                 res.json().then((data) => {
-                  if (data.status) {
+                  if (res.status == 200) {
                     toast(data.message, {
                       type: "success",
                     });
