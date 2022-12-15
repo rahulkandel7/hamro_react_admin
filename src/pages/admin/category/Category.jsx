@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -5,11 +6,9 @@ import useSWR from "swr";
 import AdminLayout from "../../../components/admin/AdminLayout";
 import ShowDelete from "../../../components/admin/utils/ShowDelete";
 import AddButton from "../../../components/utils/AddButton";
-import EditButton from "../../../components/utils/buttons/EditButton";
 import DeleteButton from "../../../components/utils/buttons/DeleteButton";
-
+import EditButton from "../../../components/utils/buttons/EditButton";
 import SearchBox from "../../../components/utils/SearchBox";
-import Spinner from "../../../components/utils/Spinner";
 import ServerError from "../../500";
 
 function Category() {
@@ -29,6 +28,8 @@ function Category() {
   //* For deleting data
   const [isDelete, setIsDelete] = useState(false);
   const [id, setId] = useState();
+  const [pageSize, setPageSize] = useState(5);
+
 
   const toggleIsDelete = () => {
     if (isDelete) {

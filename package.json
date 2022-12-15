@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@fancyapps/ui": "^4.0.31",
     "@tinymce/tinymce-react": "^4.2.0",
+    "chart.js": "^4.0.1",
     "formik": "^2.2.9",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-qr-code": "^2.0.8",
