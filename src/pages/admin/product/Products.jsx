@@ -24,9 +24,6 @@ function Product() {
     fetcher
   );
 
-
-
-
   const {
     data: categoryData,
     mutate: categoryMutate,
